@@ -28,7 +28,7 @@ y DUP . ." contains " @ . CR
 
 10 myArray z
 66 4 z !
-4 z @ .
+4 z @ . CR
 
 ' z >BODY 4 CELLS + @ .
 
