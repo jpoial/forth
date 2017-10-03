@@ -32,3 +32,15 @@ y DUP . ." contains " @ . CR
 
 ' z >BODY 4 CELLS + @ .
 
+: wait-space ( --- )
+  BEGIN
+    CR ." Press space bar "
+    KEY DUP EMIT 32 = 0=
+  WHILE
+    CR ." Try again "
+  REPEAT
+  CR ." That's ok " ;
+
+: fact ( n --- n! )
+  DUP 1 DO I * LOOP ;
+
