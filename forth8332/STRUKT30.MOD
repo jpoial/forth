@@ -1,0 +1,14 @@
+MODULE STRUKT30;
+TYPE ATYPE=ARRAY [0..3] OF INTEGER;
+VAR B: ATYPE;
+    M,N: INTEGER;
+BEGIN
+    M:=2;
+    N:=4;
+    B:=ATYPE(N,1,M+8,5);
+    FORTH
+       /$ addr B CR HEX DUP . CR 16 DUMP DECIMAL CR $/
+    END;
+END STRUKT30.
+
+    

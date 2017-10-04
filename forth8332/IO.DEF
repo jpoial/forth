@@ -1,0 +1,69 @@
+(* Copyright (C) 1987 Jensen & Partners International *)
+DEFINITION MODULE IO;
+
+FROM Str IMPORT CHARSET;
+
+CONST
+  MaxRdLength = 256;
+   
+TYPE
+  WrStrType   = PROCEDURE ( ARRAY OF CHAR );
+  RdStrType   = PROCEDURE ( VAR ARRAY OF CHAR );
+  
+
+PROCEDURE WrChar   ( V: CHAR );
+PROCEDURE WrBool   ( V: BOOLEAN  ; Length: INTEGER );
+PROCEDURE WrInt    ( V: INTEGER  ; Length: INTEGER );
+PROCEDURE WrCard   ( V: CARDINAL ; Length: INTEGER );
+PROCEDURE WrHex    ( V: CARDINAL ; Length: INTEGER );
+
+(* PROCEDURE WrReal   ( V: REAL ; Precision: CARDINAL; Length: INTEGER); *)
+
+PROCEDURE WrCharRep( V: CHAR ; count: CARDINAL );
+
+PROCEDURE WrStr    ( S: ARRAY OF CHAR );
+
+PROCEDURE WrStrAdj ( S: ARRAY OF CHAR; Length: INTEGER );
+
+PROCEDURE WrLn;
+
+
+PROCEDURE RdChar()    : CHAR;
+PROCEDURE RdBool()    : BOOLEAN;
+PROCEDURE RdInt()     : INTEGER;
+PROCEDURE RdCard()    : CARDINAL;
+PROCEDURE RdHex()     : CARDINAL;
+
+(* PROCEDURE RdReal()    : REAL; *)
+
+PROCEDURE RdStr(VAR S: ARRAY OF CHAR);
+
+PROCEDURE RdItem(VAR V: ARRAY OF CHAR);
+PROCEDURE RdLn;
+
+PROCEDURE EndOfRd(Skip: BOOLEAN) : BOOLEAN;
+
+
+PROCEDURE KeyPressed() : BOOLEAN;
+
+PROCEDURE RdCharDirect() : CHAR;
+
+
+PROCEDURE RedirectInput (FileName: ARRAY OF CHAR);
+
+PROCEDURE RedirectOutput(FileName: ARRAY OF CHAR);
+
+
+VAR RdLnOnWr      : BOOLEAN;      (* Clear buffered input after write     *)
+VAR Prompt        : BOOLEAN;      (* Prompt ('?') on read from empty line *)
+  
+VAR WrStrRedirect : WrStrType;
+VAR RdStrRedirect : RdStrType;
+  
+VAR Separators  : CHARSET;
+VAR OK          : BOOLEAN;
+VAR ChopOff     : BOOLEAN;
+VAR Eng         : BOOLEAN;      (* Engineering notation *)
+
+
+END IO.

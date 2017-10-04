@@ -1,0 +1,22 @@
+DEFINITION MODULE KUNDE;
+
+(* Eeldefineeritud tu"u"bid *)
+    TYPE REATYYP = ARRAY [1..60] OF CHAR;
+    TYPE LYHIREATYYP = ARRAY [1..30] OF CHAR;
+
+(* Maksekorralduste to"o"tlemise vo~tmed *)
+    TYPE KEY1TYYP = RECORD KUNDENUMBER:CARDINAL END;
+
+(* Maksekorralduse struktuur *)
+    TYPE KLIENT = RECORD
+                          KUNDENUMBER:CARDINAL (* 0 - "Areng" ise *);
+                          NIMETUS:ARRAY [1..49] OF CHAR;
+                          NJATK:  ARRAY [1..28] OF CHAR;
+                          KOOD:   ARRAY [1..6]  OF CHAR;
+                          PANGANIMI:ARRAY [1..28] OF CHAR;
+                          PANGALINN:ARRAY [1..9] OF CHAR;
+                          ARVEKOOD: ARRAY [1..10] OF CHAR;
+                          ARVENR:CARDINAL (* maksja arve number *);
+                  END; 
+END KUNDE.
+

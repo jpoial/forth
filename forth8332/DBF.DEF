@@ -1,0 +1,74 @@
+DEFINITION MODULE DBF;
+
+CONST
+  MaxSet = 32;
+  CSWords = 256 DIV MaxSet - 1;
+
+TYPE PathStr = ARRAY[0..64] OF CHAR;
+     PathTail = ARRAY[0..12] OF CHAR;
+     FileAttr = SET OF (readonly,hidden,system,volume,directory,archive);
+     DirEntry = RECORD
+                 rsvd : ARRAY[0..20] OF CHAR;
+                 attr : FileAttr;
+                 time : CARDINAL;
+                 date : CARDINAL;
+                 size : CARDINAL;
+                 Name : PathTail;
+                END;
+     CHARSET = ARRAY [0 .. CSWords] OF BITSET;
+
+PROCEDURE Compare(S1,S2: ARRAY OF CHAR) : INTEGER;
+PROCEDURE Length(S1: ARRAY OF CHAR) : CARDINAL;
+PROCEDURE Copy  (VAR Ns: ARRAY OF CHAR; S: ARRAY OF CHAR);
+PROCEDURE InclChar (s: CHAR; VAR cset: CHARSET);
+PROCEDURE EmptyCharSet (VAR cset: CHARSET);
+
+PROCEDURE InitDBFs ;         
+
+PROCEDURE OpenDBF    ( Legend: PathTail;
+                       FileName: PathStr;
+                       VAR FILE : WORD) : BOOLEAN;
+
+PROCEDURE OpenDBFro  ( Legend: PathTail;
+                       FileName: PathStr;
+                       VAR FILE : WORD) : BOOLEAN;
+
+PROCEDURE OpenByName ( Legend: PathTail;
+                       VAR FILE : WORD) : BOOLEAN;
+
+PROCEDURE OpenByNameRO ( Legend: PathTail;
+                         VAR FILE : WORD) : BOOLEAN;
+
+PROCEDURE GetByKey   ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE GetByIndex ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD;
+                       I: CARDINAL) : BOOLEAN;
+
+PROCEDURE GetFirst   ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE GetLast    ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE GetPrev    ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE GetNext    ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE PutRecord  ( VAR FILE: WORD;
+                       VAR Rec: ARRAY OF WORD) : BOOLEAN;
+
+PROCEDURE CloseDBF   ( VAR FILE: WORD) : BOOLEAN;
+
+PROCEDURE SetKeySequence ( VAR FILE : WORD; KeyIndex : CARDINAL );
+
+PROCEDURE MoveRecord ( VAR R1,R2: ARRAY OF WORD); 
+
+PROCEDURE ClearRecord( VAR R : ARRAY OF WORD );
+
+PROCEDURE MBase;
+
+END DBF.

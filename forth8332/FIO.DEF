@@ -1,0 +1,133 @@
+(* Copyright (C) 1987 Jensen & Partners International *)
+DEFINITION MODULE FIO;
+
+IMPORT Str;
+
+
+CONST
+  MaxOpenFiles = 15;
+
+TYPE
+  File = CARDINAL;
+
+CONST
+  DiskFull       = 0F0H ; (* Error if Write fails with disk full *)
+
+  StandardInput  = 0 ;    (* MSDOS standard handles *)
+  StandardOutput = 1 ;
+  ErrorOutput    = 2 ;
+  AuxDevice      = 3 ;
+  PrinterDevice  = 4 ;
+
+TYPE
+  BufRec =  RECORD
+              RWPos,
+              EOB,
+              BufSize : CARDINAL;
+              Buffer  : ARRAY[0..0] OF CHAR;
+            END;
+
+CONST
+  BufferOverhead = 12 (* SIZE(BufRec)-1 *) ;
+
+VAR
+  IOcheck : BOOLEAN;      (* if true errors terminate program with report *)
+  EOF     : BOOLEAN;
+
+
+PROCEDURE IOresult() : CARDINAL;
+
+PROCEDURE Open  (Name: ARRAY OF CHAR) : File;
+PROCEDURE Create(Name: ARRAY OF CHAR) : File;
+PROCEDURE Append(Name: ARRAY OF CHAR) : File;
+PROCEDURE Close (F: File);
+PROCEDURE Size  (F: File) : CARDINAL;
+PROCEDURE GetPos(F: File) : CARDINAL;
+PROCEDURE Seek  (F: File; pos: CARDINAL);
+PROCEDURE Truncate(F: File);
+PROCEDURE Exists(Name: ARRAY OF CHAR) : BOOLEAN;
+PROCEDURE Erase (Name: ARRAY OF CHAR);
+PROCEDURE Rename(Name,newname : ARRAY OF CHAR);
+
+PROCEDURE AssignBuffer(F : File; VAR Buf: ARRAY OF CHAR);
+
+
+PROCEDURE ChDir (Name: ARRAY OF CHAR);
+PROCEDURE MkDir (Name: ARRAY OF CHAR);
+PROCEDURE RmDir (Name: ARRAY OF CHAR);
+PROCEDURE GetDir(drive: CARDINAL; VAR Name: ARRAY OF CHAR);
+
+
+TYPE
+  PathStr  = ARRAY[0..64] OF CHAR;
+  PathTail = ARRAY[0..12] OF CHAR;
+
+TYPE
+  FileAttr = SET OF (readonly,hidden,system,volume,directory,archive);
+  DirEntry = RECORD
+               rsvd : ARRAY[0..20] OF CHAR;
+               attr : FileAttr;
+               time : CARDINAL;
+               date : CARDINAL;
+               size : CARDINAL;
+               Name : PathTail;
+             END;
+
+
+PROCEDURE ReadFirstEntry(DirName : ARRAY OF CHAR;
+                         Attr    : FileAttr;
+                         VAR D   : DirEntry) : BOOLEAN;
+
+PROCEDURE ReadNextEntry (VAR D   : DirEntry) : BOOLEAN;
+
+
+PROCEDURE WrChar   (F: File; V: CHAR );
+PROCEDURE WrBool   (F: File; V: BOOLEAN  ; Length: INTEGER);
+PROCEDURE WrInt    (F: File; V: INTEGER  ; Length: INTEGER);
+(*
+PROCEDURE WrShtCard(F: File; V: BYTE; Length: INTEGER);
+*)
+PROCEDURE WrCard   (F: File; V: CARDINAL ; Length: INTEGER);
+(*
+PROCEDURE WrShtHex (F: File; V: BYTE; Length: INTEGER);
+*)
+PROCEDURE WrHex    (F: File; V: CARDINAL ; Length: INTEGER);
+(*
+PROCEDURE WrReal   (F: File; V: REAL     ; Precision: CARDINAL; Length: INTEGER);
+*)
+PROCEDURE WrStr    (F: File; Buf: ARRAY OF CHAR);
+PROCEDURE WrStrAdj (F: File; S: ARRAY OF CHAR; Length: INTEGER);
+PROCEDURE WrLn     (F: File);
+PROCEDURE WrCharRep(F: File; V: CHAR; Count: CARDINAL );
+
+PROCEDURE WrBin    (F: File; Buf: ARRAY OF CHAR; Count: CARDINAL);
+
+
+
+PROCEDURE RdChar   (F: File) : CHAR;
+PROCEDURE RdBool   (F: File) : BOOLEAN;
+PROCEDURE RdInt    (F: File) : INTEGER;
+(*
+PROCEDURE RdShtCard(F: File) : BYTE;
+*)
+PROCEDURE RdCard   (F: File) : CARDINAL;
+(*
+PROCEDURE RdShtHex (F: File) : BYTE;
+*)
+PROCEDURE RdHex    (F: File) : CARDINAL;
+(*
+PROCEDURE RdReal   (F: File) : REAL;
+*)
+PROCEDURE RdItem   (F: File; VAR S: ARRAY OF CHAR);
+PROCEDURE RdStr    (F: File; VAR Buf: ARRAY OF CHAR);
+
+PROCEDURE RdBin    (F: File; VAR Buf: ARRAY OF CHAR; Count: CARDINAL) : CARDINAL;
+
+
+VAR Separators  : Str.CHARSET;
+VAR OK          : BOOLEAN;
+VAR ChopOff     : BOOLEAN;
+VAR Eng         : BOOLEAN;      (* Engineering notation *)
+
+
+END FIO.

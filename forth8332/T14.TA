@@ -1,0 +1,1033 @@
+       START
+       MOV #8100,A4
+       MOV #8000,A6
+       CALL #03D4
+       NOP
+       STOP
+       MOV  #8402,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       MOV (A0),R4
+       ADD R4,R3
+       MOV R3,(A0)
+       MOV  #8402,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8404,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       CMP R3,R2
+       MOV R2,#0
+       CHECK N=0
+       DEC R2
+       OR R2,R2
+       CHECK Z=1
+       JMP  *+2
+       NOP
+       MOV  #8402,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0004,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       RET
+       NOP
+       NOP
+       MOV  #8400,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R0 
+       MOV R0,#0 
+       CHECK Z=1
+       DEC R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       OR R2,R2
+       CHECK Z=1
+       JMP  *+69
+       NOP
+       MOV  #8401,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #8402,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #8403,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #FFFF,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #8404,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #8405,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0008,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       CALL #0005
+       NOP
+       MOV (#8406),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #8400,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       RET
+       NOP
+       NOP
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       SUB R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #840E,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R3,R0
+       MOV  #8402,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8403,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #0002,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       CALL #0005
+       NOP
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0002,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #840F,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R2,R7
+       MOV R3,R2
+       MOV R7,R3
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       RET
+       NOP
+       NOP
+       MOV  #0002,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R1,(A6)
+       MOV A6,A0
+       MOV R0,D0
+       MOV (A0-D,A0),R0
+       MOV  #0002,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R1,(A6)
+       MOV A6,A0
+       MOV R0,D0
+       MOV (A0-D,A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R4
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R3,(SP+)
+       MOV R2,R1
+       MOV R4,R0
+       MOV R2,R7
+       MOV R4,R2
+       MOV R7,R3
+       XOR R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R1,R5
+       MULF R0,R1
+       LOOP 15
+       NOP
+       END_LOOP
+       MULS R0,R1
+       MOV R1,R0
+       MOV R5,R1
+       MOV R0,R2
+       MOV R1,R2
+       MOV (-SP),R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R3,R0
+       MOV R0,R0 
+       MOV R0,#0 
+       CHECK N=1
+       DEC R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       OR R2,R2
+       CHECK Z=1
+       JMP  *+3
+       NOP
+       NEG R0
+       MOV  #8402,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R3,(SP+)
+       MOV R2,R1
+       MOV R3,R0
+       CALL #0005
+       NOP
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R4
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R3,R1
+       MOV R2,R0
+       MOV R2,R7
+       MOV R4,R2
+       MOV R7,R3
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R2,R7
+       MOV R3,R2
+       MOV R7,R3
+       MOV R0,R4
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R4,A1
+       MOV R3,A0
+       MOV R2,R2
+       CHECK Z=1
+       JMP  *+6
+       NOP
+       MOV (A1+),R5
+       MOV R5,(A0+)
+       DEC R2
+       JMP  *-7
+       NOP
+       RET
+       NOP
+       NOP
+       MOV  #8403,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #8402,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R3,(SP+)
+       MOV R2,R1
+       MOV R3,R0
+       MOV  #0002,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #840F,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #8403,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       RET
+       NOP
+       NOP
+       MOV  #8407,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       INC R0
+       MOV  #8485,R2
+       MOV R1,(SP+)
+       MOV R0,(SP+)
+       MOV R2,R1
+       MOV R2,R0
+       MOV  #0007,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R3,A0
+       CLR R5
+       MOV R2,R2
+       CHECK Z=1
+       JMP  *+5
+       NOP
+       MOV R5,(A0+)
+       DEC R2
+       JMP  *-6
+       NOP
+       MOV  #0006,R2
+       MOV R0,R3
+       MOV R1,R4
+       MOV (-SP),R0
+       MOV (-SP),R1
+       MOV R4,A1
+       MOV R3,A0
+       MOV R2,R2
+       CHECK Z=1
+       JMP  *+6
+       NOP
+       MOV (A1+),R5
+       MOV R5,(A0+)
+       DEC R2
+       JMP  *-7
+       NOP
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #8485,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0007,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #009B
+       NOP
+       MOV  #0005,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#8410),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #0142
+       NOP
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       SUB R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #840E,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV  #B800,R3
+       ASR R3,16
+       OR R3,R2
+       MOV PC,R3
+       MOV R4,#5
+       ADD R4,R3
+       MOV R3,A3
+       MOV R2,(A3)
+       NOP
+       CALL #0000
+       NOP
+       CALL #01C4
+       NOP
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #8411,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       INC R0
+       MOV  #0004,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #009B
+       NOP
+       MOV  #0005,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#8416),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #0142
+       NOP
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       SUB R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #840E,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV  #B800,R3
+       ASR R3,16
+       OR R3,R2
+       MOV PC,R3
+       MOV R4,#5
+       ADD R4,R3
+       MOV R3,A3
+       MOV R2,(A3)
+       NOP
+       CALL #0000
+       NOP
+       CALL #01C4
+       NOP
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #8417,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       INC R0
+       MOV  #0004,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #009B
+       NOP
+       MOV  #0005,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#841C),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       CALL #0142
+       NOP
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       SUB R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #840E,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV  #B800,R3
+       ASR R3,16
+       OR R3,R2
+       MOV PC,R3
+       MOV R4,#5
+       ADD R4,R3
+       MOV R3,A3
+       MOV R2,(A3)
+       NOP
+       CALL #0000
+       NOP
+       CALL #01C4
+       NOP
+       RET
+       NOP
+       NOP
+       MOV  #0005,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#841D),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0001,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       SUB R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV  #0007,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#841E),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R0,R3
+       MOV R1,R0
+       MOV (-SP),R1
+       MOV R2,A0
+       NOP
+       MOV R3,(A0)
+       MOV  #0005,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#841F),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV  #0007,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV (#8420),R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       MOV R0,R2
+       MOV R1,R3
+       MOV (-SP),R0
+       MOV (-SP),R1
+       ADD R3,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       MOV R0,A0
+       NOP
+       MOV (A0),R0
+       INC R0
+       MOV R0,R2
+       MOV R1,R2
+       MOV (-SP),R0
+       MOV (-SP),R1
+       RET
+       NOP
+       NOP
+       CALL #0043
+       NOP
+       CALL #0217
+       NOP
+       MOV  #0364,R2
+       MOV R1,(SP+)
+       MOV R0,R1
+       MOV R2,R0
+       RET
+       NOP
+       NOP
+       DATA
+       DC X'00000000'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00000000'
+       DC X'0000FA93'
+       DC X'FFFFFFFF'
+       DC X'00000006'
+       DC X'00000053'
+       DC X'00000054'
+       DC X'00000052'
+       DC X'00000049'
+       DC X'0000004E'
+       DC X'00000047'
+       DC X'00008421'
+       DC X'00000000'
+       DC X'00014F36'
+       DC X'00000004'
+       DC X'00000054'
+       DC X'00000045'
+       DC X'00000058'
+       DC X'00000054'
+       DC X'00014F36'
+       DC X'00000004'
+       DC X'00000053'
+       DC X'00000051'
+       DC X'0000004E'
+       DC X'00000041'
+       DC X'00014F36'
+       DC X'00014F36'
+       DC X'00014F36'
+       DC X'00014F36'
+       DC X'00014F36'
+       DC X'00008422'
+       DC X'00000001'
+       DC X'00000364'
+       DC X'00000008'
+       DC X'00000005'
+       DC X'00000000'
+       END

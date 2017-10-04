@@ -1,0 +1,14 @@
+DEFINITION MODULE Terminal ;
+
+(* Core library interface *)
+
+PROCEDURE Read ( VAR v : CHAR ) ;
+PROCEDURE ReadAgain ;
+
+PROCEDURE Write    ( v : CHAR ) ;
+PROCEDURE WriteLn ;
+PROCEDURE WriteString ( s : ARRAY OF CHAR ) ;
+
+END Terminal.
+
+

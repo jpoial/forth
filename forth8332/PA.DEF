@@ -1,0 +1,31 @@
+DEFINITION MODULE PA;
+
+(* Pu"siandmete to"o"tlemise vo~tmed *)
+    TYPE PartneriNrJargi = RECORD PartneriNr: CARDINAL END;
+    TYPE PartArveNrJargi = RECORD ArveNr: CARDINAL END;
+
+(* Partnerite kirje struktuur *)
+    TYPE KLIENT = RECORD
+             PartneriNr:CARDINAL;
+             PartnNimetus:ARRAY [1..30] OF CHAR;
+             NimetuseJatk:ARRAY [1..30] OF CHAR;
+             Kood:ARRAY [1..6] OF CHAR (* tavaliselt puudub *);
+             PKorArveNr:ARRAY [1..10] OF CHAR
+                        (* partneri panga atribuut, kui on vahendajapank *);
+             PangaNimi:ARRAY [1..22] OF CHAR;
+             PangaLinn:ARRAY [1..10] OF CHAR;
+             PKood:ARRAY [1..10] OF CHAR (* p.panga kood *);
+             ArveNr:CARDINAL (* partneri arve number *);
+             VahendPangaNimi:ARRAY [1..22] OF CHAR
+                        (* vahendajapanga andmed *);
+             VahendPangaLinn:ARRAY [1..10] OF CHAR;
+             KSNimi: ARRAY [1..30] OF CHAR;
+             KSKood: ARRAY [1..6] OF CHAR;
+             KSJaam: ARRAY [1..10] OF CHAR;
+             Leping: ARRAY [1..38] OF CHAR;
+             KSaaViis: ARRAY [1..20] OF CHAR;
+             KSViJatk: ARRAY [1..20] OF CHAR;
+             KSAadress:ARRAY [1..60] OF CHAR;
+         END; 
+END PA.
+

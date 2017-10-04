@@ -1,0 +1,82 @@
+DEFINITION MODULE KDR;
+TYPE DATE=RECORD Paev:[1..31];
+		 Kuu:[1..12];
+		 Aasta:[1900..2010];
+	  END;
+TYPE Valland=RECORD Asutus: ARRAY[1..40] OF CHAR;
+		    Amet: ARRAY[1..40] OF CHAR;
+		    VallAeg: DATE;
+		    Pohjus: ARRAY[1..40] OF CHAR;
+             END;
+TYPE Inime=RECORD Nimi,Eesnimi,Isanimi:ARRAY[1..20] OF CHAR;
+                  Synniaasta:[1900..2010];
+           END;
+TYPE Perekond=RECORD Abikaasa:Inime;
+		     Lapsed:ARRAY[1..10] OF Inime;
+	      END;	     
+TYPE Pasport=RECORD Seeria:INTEGER;
+		    Nr:INTEGER;		
+		    Valjaandja: ARRAY[1..40] OF CHAR;
+                    ValjKuupaev:DATE;
+	     END;
+TYPE PAGUN=( reamees, jefreitor, nooremseersant, seersant, vanemseersant,
+vanem, lipnik, nooremleitnant, leitnant, vanemleitnant, kapten, major,
+alampolkovnik, polkovnik, kindralmajor, kindralleitnant, kindralpolkovnik,
+armeekindral, marssal );
+TYPE SUGU=(Mees,Naine);
+
+TYPE Sojavagi=RECORD Arvegrupp:INTEGER;
+		     Liik:INTEGER;
+		     Koosseis: ARRAY[1..40] OF CHAR;
+		     Auaste:PAGUN;
+		     Sojaeriala:INTEGER;
+		     Kolblik:(jah,ei);
+	      END;	 	
+TYPE Ymberpaigutamine=RECORD Kuupaev:DATE;
+			     Tsehh: ARRAY[1..40] OF CHAR;
+			     Kutse: ARRAY[1..40] OF CHAR;
+			     Jark: ARRAY[1..20] OF CHAR;
+    			     Alus: ARRAY[1..40] OF CHAR;
+		      END;
+TYPE Ptyyp= ARRAY[1..60] OF CHAR;
+TYPE Puhkustyyp= RECORD  Puhkus:Ptyyp END;
+
+TYPE Inimene=RECORD
+                Isikunumber: INTEGER;
+		Nimi,Eesnimi,Isanimi: ARRAY[1..20] OF CHAR;
+		Synniaeg:DATE;
+		Synnikoht: ARRAY[1..40] OF CHAR;
+		Rahvus: ARRAY[1..20] OF CHAR;
+		Haridus:(korgem,kesk,keskeri,mittetkesk,alg);
+		Klasse:[1..12];
+		Kool:ARRAY[1..40] OF CHAR;
+		Lopuaasta:[1900..2010];
+		Oppevorm:(paevane,ohtune,kaugope);
+		Eriala: ARRAY[1..20] OF CHAR;
+		Diplominumber: INTEGER;
+		DiplKuupaev: DATE;
+		StaazErialal: [0..70];
+                Kvalifikatsioon: ARRAY[1..40] OF CHAR;
+		KvalDiplNr: INTEGER;
+		KvalDiplKuupaev: DATE;
+		Pohikutseala: ARRAY[1..40] OF CHAR;
+		StaazKutsealal: [0..70];
+		Yldstaaz: [0..70];
+		Pidevstaaz: [0..70];
+		ViimaneToo: Valland;
+		Perekonnaseis: (vallaline,abielus);
+		PereKoosseis: Perekond;
+		Pass:Pasport;
+		Aadress: ARRAY[1..60] OF CHAR;
+		Telefon: INTEGER;
+		TaitmiseKuupaev: DATE;
+                SojaArvestus:Sojavagi;
+		Karjaar: ARRAY[1..20] OF Ymberpaigutamine;
+		Puhkused: ARRAY[1..40] OF Puhkustyyp;
+             END;
+
+TYPE KEY1=RECORD Isikunumber: INTEGER; END;
+TYPE KEY2=RECORD Nimi,Eesnimi: ARRAY[1..20] OF CHAR; END;
+
+END KDR. 	    
+		 

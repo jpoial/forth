@@ -1,0 +1,227 @@
+       START
+       A4 <- X'8100'
+       A6 <- X'8000'
+       CALL (X'009B')
+       NOP
+       STOP
+       R2 <- X'8402'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       R4 <- (A0)
+       R3 <- R3+R4
+       R3 -> (A0)
+       R2 <- X'8402'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8404'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R3 ? R2
+       R2 <- 0
+       CHECK N=0
+       R2 <- R2-1
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+2
+       NOP
+       R2 <- X'8402'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8403'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'0004'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       RET_SUBR
+       NOP
+       NOP
+       R2 <- X'8400'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R0 <- R0 SET_NZVC
+       R0 <- 0 
+       CHECK Z=1
+       R0 <- R0-1
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+69
+       NOP
+       R2 <- X'8401'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R0 -> (A6+)
+       R1 <- R2
+       R0 <- R2
+       R2 <- X'8402'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8403'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'FFFF'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8404'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8405'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'0008'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       CALL (X'0005')
+       NOP
+       R2 <- (X'8406')
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8400'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       RET_SUBR
+       NOP
+       NOP
+       CALL (X'0043')
+       NOP
+       R2 <- X'0001'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'03E8'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R3 ? R2
+       R2 <- 0
+       CHECK N=1
+       R2 <- R2-1
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R0 <- R0 SET_NZVC
+       CHECK N=1
+       R0 <- -R0
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+19
+       NOP
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'0001'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R7 <- R2
+       R2 <- R3
+       R3 <- R7
+       A0 <- R2
+       R4 <- (A0)
+       R3 <- R3+R4
+       R3 -> (A0)
+       SKIP  *-43
+       NOP
+       RET_SUBR
+       NOP
+       NOP
+       DATA
+       DC X'00000000'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00000000'
+       DC X'0000C4B2'
+       DC X'FFFFFFFF'
+       DC X'00000000'
+       END

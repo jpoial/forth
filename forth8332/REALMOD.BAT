@@ -1,0 +1,1 @@
+@loadf realcomp %1

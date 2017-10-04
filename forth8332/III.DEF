@@ -1,0 +1,13 @@
+DEFINITION MODULE III;
+CONST A=1990;
+TYPE RTYYP = RECORD
+                 V1 : INTEGER;
+                 V2 : ARRAY [1..8] OF CHAR;
+                 CASE TAG : BOOLEAN OF
+                   TRUE : V3 : CARDINAL |
+                   FALSE : V4 : CHAR |
+                 END;
+             END;
+VAR RVAR : RTYYP; 
+END III.
+

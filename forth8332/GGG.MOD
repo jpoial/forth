@@ -1,0 +1,9 @@
+MODULE GGG;
+FROM JJJ IMPORT B;
+FROM IO IMPORT WrInt; 
+(* FROM FIO IMPORT WrLn; *)
+BEGIN
+    FORTH /$ CR ." TERE GGG" CR $/ END;
+    WrInt(5,4); 
+END GGG.
+

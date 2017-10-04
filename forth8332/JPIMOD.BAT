@@ -1,0 +1,1 @@
+@LOADF JPICOMP %1

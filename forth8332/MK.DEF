@@ -1,0 +1,64 @@
+
+DEFINITION MODULE MK;
+
+(* Eeldefineeritud tu"u"bid *)
+    TYPE KUUTYYP = (skp,jaanuar,veebruar,marts,aprill,mai,juuni,
+                    juuli,august,september,oktoober,november,detsember);
+                    
+(* Maksekorralduste to"o"tlemise vo~tmed *)
+    TYPE MKorrNrJargi =      RECORD MKorrNr:CARDINAL END;
+    TYPE SaajaNrJargi =      RECORD SaajaNr:CARDINAL END;
+    TYPE KuupaevaJargi =     RECORD Paev:[1..31];
+                                    Kuu:KUUTYYP;
+                                    Aasta:[1900..2100]
+                             END;
+    TYPE RahasummaJargi =    RECORD RBL:[0..9999999];
+                                    KOP:[0..99]
+                             END;
+    TYPE MaksjaArveNrJargi = RECORD MaksjaArveNr:CARDINAL END;
+    TYPE SaajaArveNrJargi =  RECORD SaajaArveNr:CARDINAL END;
+ 
+(* Maksekorralduse struktuur *)
+    TYPE MKORTYYP =
+           RECORD
+             MKorrNr:CARDINAL (* maksekorralduse number *);
+             Paev:[1..31];
+             Kuu:KUUTYYP;
+             Aasta:[1900..2100];
+             MaksjaNr:CARDINAL;
+                 MaksjaNimetus:ARRAY [1..30] OF CHAR;
+                 MNimetuseJatk:ARRAY [1..30] OF CHAR;
+                 MaksjaKood:ARRAY [1..6] OF CHAR (* 8695,tavaliselt pole *);
+                 MaksjaPKorArveNr:ARRAY [1..10] OF CHAR
+                        (* maksja panga atribuut, kui on vahendajapank *);
+                 MaksjaPangaNimi:ARRAY [1..22] OF CHAR;
+                 MaksjaPangaLinn:ARRAY [1..10] OF CHAR;
+                 MaksjaPKood:ARRAY [1..10] OF CHAR (* m.panga kood *);
+                 MaksjaArveNr:CARDINAL (* maksja arve number *);
+                 MVahendPangaNimi:ARRAY [1..22] OF CHAR
+                        (* vahendajapanga andmed *);
+                 MVahendPangaLinn:ARRAY [1..10] OF CHAR;
+             RBL:[0..9999999];
+             KOP:[0..99];
+             SaajaNr:CARDINAL (* pu"siandmete indeks *);
+                 SaajaNimetus:ARRAY [1..30] OF CHAR;
+                 SNimetusJatk:ARRAY [1..30] OF CHAR;
+                 SaajaKood:ARRAY [1..6] OF CHAR (* tavaliselt pole *);
+                 SaajaPKorArveNr:ARRAY [1..10] OF CHAR
+                        (* saaja panga atribuut, kui on vahendajapank *);
+                 SaajaPangaNimi:ARRAY [1..22] OF CHAR;
+                 SaajaPangaLinn:ARRAY [1..10] OF CHAR;
+                 SaajaPKood:ARRAY [1..10] OF CHAR (* s.panga kood *);
+                 SaajaArveNr:CARDINAL (* saaja arve number *);
+                 SVahendPangaNimi:ARRAY [1..22] OF CHAR
+                        (* vahendajapanga andmed *);
+                 SVahendPangaLinn:ARRAY [1..10] OF CHAR;
+             SummaSonades,                      
+             SSonadesJatk:ARRAY [1..60] OF CHAR;
+             MilleEest,           
+             VaruRida1,            
+             VaruRida2,            
+             VaruRida3:ARRAY [1..30] OF CHAR;
+           END; 
+END MK.
+

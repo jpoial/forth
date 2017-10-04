@@ -1,0 +1,1445 @@
+                            S I S U K O R D
+
+
+    Andmebaasissteemi "Modula-2Base" lhikirjeldus.
+    1. Modula-2.
+    1.1. Moodulite liigid.
+    1.2. Standardmoodulid.
+    1.3. Globaalmoodul. Definitsiooni- ja realisatsioonimoodul.
+    1.3.1. Definitsioonimoodul.
+    1.3.2. Realisatsioonimoodul.
+    2. Failiredaktor ja aruannete generaator.
+    2.1. Faili kirjeldamine.
+    2.1.1. Andmetbid.
+    2.1.2. Alternatiivne kirje.
+    2.1.3. Failikirjelduse realisatsioonimoodul.
+    2.1.4. Failikirjelduse programmimoodul.
+    2.1.5. Andmebaasifailidest.
+    2.2. Aruannete generaator.
+    2.2.1. Programmimooduli n„ide.
+    2.2.2. Protseduuride kirjeldused.
+    2.2.2.1. InitDBFs.
+    2.2.2.2. Faili avamine.
+    2.2.2.3. SetKeySequence.
+    2.2.2.4. GetByKey.
+    2.2.2.5. GetByIndex.
+    2.2.2.6. GetFirst.
+    2.2.2.7. GetLast.
+    2.2.2.8. GetPrev.
+    2.2.2.9. GetNext.
+    2.2.2.10. PutRecord.
+    2.2.2.11. CloseDBF.
+    2.2.2.12. MoveRecord.
+    2.3. Keskkond.
+    2.3.1. Men.
+    2.3.2. Failikirjelduse lisamine.
+    3. Failiredaktor.
+    3.0. Faili kujutamine redaktoris.
+    3.1. Failiredaktori v“imalused.
+    3.1.1. Uue faili avamine.
+    3.1.1.1. Failile nime andmine.
+    3.1.1.2. V“tmekomplektide m„„ramine.
+    3.1.1.3. Vabad tekstid.
+    3.1.2. Kirjete t””tlus.
+    3.1.2.0. P“himen.
+    3.1.2.0.1. Otsimissuuna m„„ramine failitabeli puhul.
+    3.1.2.0.2. Otsimissuuna m„„ramine kirjetabeli puhul.
+    3.1.2.0.3. Dialoogi l“petamine.
+    3.1.2.1. Kirjeredaktor.
+    3.1.3. Help-ssteem.
+    4. Tabeli trkk.
+    4.1. Tabel "ise".
+    4.1.1. Men.
+    4.1.2. Trkirezhiim.
+    4.2. Tabeli ette ja taha trkitavad tekstid ( "Aatomid" ja "Tekstid" ).
+    4.3. Printer.
+    5. Funktsionaalsed klahvid. Redigeerimine.
+    5.1. Klahvid F1..F10.
+    5.2. Kursorijuhtimisklahvid, "Enter", "Insert" ja "Escape".
+    5.3. "Home", "End", "Page Up" ja "Page Down".
+    5.4. Sisestamine.
+    5.5. Kustutamine.
+    6. Failid.
+    6.1. Ssteemsed failid.
+    6.1.1. Programmfailid.
+    6.1.2. Modula-2 translaatori abifailid.
+    6.1.3. Abifailid.
+    6.2. Moodulifailid.
+    6.2.1. Standardmoodulid.
+    6.2.2. Globaalmoodul.
+    6.2.3. Failiredaktori programmimoodul.
+    6.2.4. P„ringuprogrammi programmimoodul.
+    6.3. Andmefailid.
+    7. Andmefailide struktuur.
+    7.1. Master-kirje.
+    7.2. Kirje p„ise formaat.
+    8. N„ide.
+    8.1. Definitsioonimoodul.
+    8.2. Realisatsioonimoodul.
+    8.3. Programmimoodul.
+    8.4. Abimoodul.
+    8.5. Failiredaktori ettevalmistamine.
+    8.6. Tabel. 
+
+
+
+               Andmebaasissteemi "Modula-2Base" lhikirjeldus.
+   Ssteem baseerub tuntud programmeerimiskeelel  Modula-2 ( N. Wirth, 1985 ):
+esiteks, sealt p„rineb andmekirjelduskeel ja teiseks -  andmet””tlusprogrammid
+tuleb kirjutada Modula-2s.  Mainitud  keele translaator personaalarvutitele on
+realiseeritud Tartus ( M. Tombak, J. P”ial, V. Soo ja A. Isotamm, 1990) trans-
+laatorite generaatori  "Tartu"  abil. Viimase ise„rasuseks on t“ik, et objekt-
+keele rollis on Forth ( versioon Forth86/32 );  sellest tingituna on kogu ss-
+teem kirjutatud Forthis ning andmet””tluski kulgeb Forthi keskkonnas.
+  Modula-2Base projekteerimisel on silmas peetud eesm„rki v„hendada miinimumi-
+ni rakendusprogrammeerija t””mahtu- k“ik see, millega ssteem ise hakkama v“ib
+saada, ongi ssteemi hooleks j„etud.  Andmebaas on  loogiliselt seotud failide
+hulk. Andmebaasi loomisel ja uuendamisel k„ib t”” faili tasemel, l„htudes fai-
+li kirjeldusest.  Modula-2 kohta on ilmunud Venemaal m“ned raamatud; soovitada
+v“iks venekeelset t“lget raamatust  Niclaus  Wirth,  Programming in  Modula-2,
+1985 ( N. Virt, Programmirovanije na jazyke Modula-2, Matematicheskoje obespe-
+chenije EVM, Moskva, "Mir", 1987), samuti raamatust Ed Knepley,  Robert Platt,
+Modula-2 Programming ( E. Nepli, R. Platt, Programmirovanije na jaz“ke Modula-
+-2, Moskva, "Radio i svjaz", 1989 ); eesti keeles on infoseeria "Arvutustehni-
+ka ja andmet””tlus" 1990. a. numbrites 1 ja 3 ilmunud Rein Jrgensoni  levaa-
+teartiklid Modula-2st. K„esoleva abimaterjali j„rgmises jaotises on R. Jrgen-
+soni lahkel loal esitatud mainitud artiklite p“hjal koostatud lhikonspekt.
+    Modula-2Base k„ib talutava kiirusega IBM AT klassi arvutitel  ( nii v„rvi-
+kui ka monokroommonitoridel ) ja v„ga aeglaselt  IBM  XT-klassi arvutitel. 32-
+bitistel  mudelitel t“useb t””kiirus hppeliselt:  lisaks  protsessori kiiruse
+t“usule kaob vajadus interpreteerida aadresside moodustamist ( AT ja XT on 16-
+bitised masinad,  Forth86/32 aga 32-bitise protsessori emulaatoriga ssteem ),
+mis lisab 4-kordse suhtelise kiiruse kasvu.
+
+                          1. Modula-2
+                    1.1. Moodulite liigid.
+
+   Keele p“hielement on moodul  -  eraldi, ent mitte s“ltumatult transleeritav
+"programm". Moodulid jagunevad kolme liiki:
+   - programmimoodul  on sisuliselt  peaprogramm,  mis kasutab teiseliigiliste 
+moodulite infot ja teenuseid;
+   - globaalmoodul   on programmimoodulile  v“i teistele moodulitele teenuseid 
+osutav omaette programmiksus;
+   - lokaalmoodul  on paigutatav  eelmiste liikide sisse, v“imaldades koondada
+ suure mooduli osa teatavasse mbrusest s“ltumatusse raamistikku.
+
+                      1.2. Standardmoodulid.
+  Modula-2 igas realisatsioonis on teatav kogum globaalseid standardmooduleid,
+mis on k“igi tarbijate k„sutuses. Vaadeldavas versioonis on need j„rgmised:
+   - ASCII ;
+   - Str toetab stringide t””tlust;
+   - InOut on m„„ratud t„is- ja kardinaalarvandmete, m„rkandmete  ja  stringi-
+andmete sisestamiseks klaviatuurilt ja v„ljastamiseks ekraanile;
+   - Terminal ;
+   - IO ;
+   - FIO sisaldab vahendeid infovahetuseks kettaga ( ei toeta kirjet );
+   - BASE sisaldab protseduuri failiredaktori k„ivitamiseks;
+   - DBF  sisaldab aruannete genereerimiseks vajalikke faili- ja kirjet””tlus-
+protseduure.
+
+        1.3. Globaalmoodul. Definitsiooni- ja realisatsioonimoodul.
+   Globaalmoodul kui programmiorganisatsiooniline struktuur koosneb kahest p“-
+hiosast: teenuste osa ja teenuste realisatsioonikoodi esitavast  realisatsioo-
+niosast. Need on kaks tekstuaalselt eraldi seisvat ksust  - definitsioonimoo-
+dul  ja realisatsioonimoodul  ( DEFINITION MODULE  ja IMPLEMENTATION MODULE ).
+Nood moodulid transleeritakse eraldi,  definitsioonimoodulist alustades.  Ss-
+teem eeldab, et globaalmooduli XXX definitsioonimoodulit esitava faili nimi on
+XXX.DEF ja realisatsioonimoodulit sisaldava faili nimi on XXX.MOD.
+
+                       1.3.1. Definitsioonimoodul.
+   Definitsioonimoodul esitab mooduli objekte kui tema poolt pakutavaid teenu-
+seid, s.o. objekte, mida moodul ekspordib.  Objektideks on identifikaatorid ja
+protseduurid. Definitsioonimooduli ldkuju on j„rgmine:
+
+    DEFINITION MODULE mooduli-nimi
+    { Impordiloetelu }    (* nende m„rkide vahele kirjutatakse kommentaare. *)
+    Definitsioon
+    { Definitsioon }  (* "{}" vahel on 0..n korda korduvad konstruktsioonid *)
+    END mooduli-nimi .
+
+   Definitsioonidega kirjeldatakse mooduli objekte. Definitsioon v“ib olla :
+   - konstandideklaratsioon;
+   - muutujadeklaratsioon;
+   - tbideklaratsioon;
+   - protseduuri p„is.
+
+                        1.3.2. Realisatsioonimoodul.
+   Realisatsioonimoodul  esitab koodi  definitsioonimooduli  realiseerimiseks:
+definitsioonimoodul n„itab, mida moodul teeb, realisatsioonimoodul aga, kuidas
+ta seda teeb. Realisatsioonimooduli ldkuju on j„rgmine:
+    IMPLEMENTATION MODULE mooduli-nimi
+    { Impordiloetelu }
+    Deklaratsioonid
+    [ BEGIN          (* "[]" vahel on konstruktsioon, mis v“ib ka puududa *)
+      Laused ] 
+    END mooduli-nimi .
+   Deklaratsiooniosasse paigutatakse tingimata k“igi definitsioonimoodulis de-
+fineeritud protseduuride ja l„bin„htamatute tpide t„ielikud deklaratsioonid.
+Vajadusel lisatakse neile objektide-deklaratsioonide  realiseerimiseks kasuta-
+tavad t„iendavad identifikaatori- ja protseduurideklaratsioonid. Realisatsioo-
+nimoodulis kehtivad definitsioonimoodulis defineeritud  identifikaatorid,  ent
+ei kehti definitsioonimoodulisse tehtud import.
+   Lauseosa ( BEGIN ja sellele j„rgnevad laused )  on m“eldud nii realsatsioo-
+ni- kui ka definitsioonimoodulis  deklareeritud muutujate  algv„„rtustamiseks,
+teda nimetatakse algv„„rtustamisosaks. 
+
+
+
+              2. Failiredaktor ja aruannete generaator.
+
+                     2.1. Faili kirjeldamine.
+
+   Fail kujutab endast hesuguse struktuuri ja  pikkusega kirjete hulka. Faili
+kirjeldamiseks  tuleb  kirjutada kirjeldusmoodul tekstiredaktori  NE.COM abil.
+Too moodul v“ib sisaldada suvalisi vajalike tpide kirjeldusi, ent peab faili
+kirjelduseks  esitama kirjetbi.  J„rgnevas  n„ites  tehakse  faili kirjeldus 
+nimega "OKT.DEF" ( NE.COM k„ivitatakse MS-DOSi k„suga "NE OKT.DEF" ), kus fai-
+li kirjed on tpi "Inimene":
+
+DEFINITION MODULE OKT;
+TYPE PAGUN=( pole, reamees, jefreitor, nooremseersant, seersant,vanemseersant,
+vanem, lipnik, nooremleitnant, leitnant, vanemleitnant, kapten, major,
+alampolkovnik, polkovnik, kindral );
+TYPE SUGU=(Mees, Naine);
+TYPE DATE=RECORD DAY:[1..31];
+                 MONTH:[1..12];
+                 YEAR:[1900..2000];
+          END;
+TYPE VIIT=POINTER TO Inimene;
+TYPE Inimene=RECORD Eesnimi,Nimi: ARRAY[1..10] OF CHAR;
+                    Synd: DATE;
+                    Aukraad: PAGUN;
+                    Next: VIIT;
+             END;
+TYPE KEY1=RECORD Eesnimi: ARRAY[1..10] OF CHAR;
+          END;
+TYPE KEY2=RECORD Aukraad: PAGUN;
+                 Nimi: ARRAY[1..10] OF CHAR;
+          END;
+TYPE KEY3=RECORD Synd: DATE;
+          END;
+END OKT .
+
+   Niisiis, faili igas kirjes on v„ljad Eesnimi, Nimi, DAY, MONTH, YEAR (kolme
+viimase hine nimi on Synd ), Aukraad ja Next.  šlej„„nud moodulis kirjeldatud
+tbid olid vajalikud failikirjelduse koostamiseks,  tpi SUGU aga ei kasuta-
+tudki.
+
+                        2.1.1. Andmetbid.
+   Andmetbid on j„rgmised:
+INTEGER  - m„rgiga t„isarv;
+CARDINAL - m„rgita t„isarv;
+REAL     - reaalarv;
+BOOLEAN  - loogiline muutuja ( v„„rtustega TRUE ja FALSE );
+CHAR     - koodi ASCII ks smbol;
+BITSET   - t„isarvude hulk vahemikust 0..31, nt.: {0..3,11,27-30} ;
+WORD     - globaalmoodulis t„psustamata he masinas“na pikkune v„li;
+Massiiv - ARRAY [ <1. indeksi rajad> ] .. [ <viimase indeksi rajad>] OF <tp>
+          M„rkus: "<" ja ">"  vahel on toodud  kas selgitus  v“i mingi  klassi
+          ldnimi; nt. massiivi elemendid v“ivad olla suvalist tpi;
+Loenditp - v„„rtusvaru loend esitatakse sulupaari "(" ja ")" vahel, eraldaja
+             on koma;
+Vahemikutp - kujul [ <miinimum> .. <maksimum> ];
+Hulgatp - nt. kui baastp  B=[0..1] ja S=SET OF B, siis S koosneb hulkadest
+            {}, {0}, {1}, {0,1};
+Viidatp - POINTER TO <tbinimi>. Selle abil saab moodustada uusi struktuur-
+            seid tpe, nt. ahelaid v“i puid;
+Kirjetp - RECORD <v„ljade kirjeldused> END.
+
+
+                        2.1.2. Alternatiivne kirje.
+  V“imalik on luua ka nn. alternatiivseid kirjeid, kus konkreetse kirje struk-
+tuur s“ltub mingi v„lja v„„rtusest. N„iteks: 
+
+DEFINITION MODULE ALT;
+FROM OKT IMPORT DATE,PAGUN,SUGU;
+
+TYPE Inime=RECORD
+  Eesnimi,Nimi: ARRAY[1..9] OF CHAR;
+  CASE Sugu: SUGU OF                                         
+          Mees:Aukraad: PAGUN |
+          Naine: Neiuna: ARRAY[1..10] OF CHAR; END;           
+  Ident:CARDINAL;
+  Synd: DATE;
+END;
+TYPE TABEL=RECORD
+     T: ARRAY[1..2] OF Inime;
+END;
+END ALT . 
+  
+   Iga esitatud kirjelduse j„rgi genereeritud kirje koosneb  kaherealisest ta-
+belist. Kummaski reas on invariantsed veerud "Eesnimi", "Nimi", "Ident","Sugu"
+ja "Synd" ning veerud "Aukraad" ja "Neiuna", mis on t„idetavad  ( juurdep„„se-
+tavad ) vastavalt veeru "Sugu" v„„rtustele.
+   Kirjeldusmoodulis saab kasutada tbikirjeldusi  varemkoostatud moodulitest
+Modula-2 standardse import-eksport-mehhanismi abil  -  nagu on siin imporditud
+aukraadi, soo ja kuup„eva kirjeldused.
+
+                  2.1.3. Failikirjelduse realisatsioonimoodul.
+   Modula-2Base'i  ssteemis  on  realisatsioonimooduli  lesandeks fikseerida
+failikirje  ning anda  tolle kirjeldus le  linkerile. Lisaks saab defineerida
+v“tmekomplekte ( neist tuleb juttu osas 3.1.1.2) ja fikseerida tabeli ette v“i
+taha trkitavaid tekste ( vt. 4.2 ). N„ide:
+
+    IMPLEMENTATION MODULE OKT;
+    VAR T1,T2,LEGEND: TEXT;
+    BEGIN
+    T1 := 'Reserv- ja erus“jav„elaste nimekiri';
+    T2 := 'Kaitseliidu lem: ';
+    LEGEND:= 'OKT';    (* definitsioonimooduli nimi *)
+    FORTH
+   (* J„rgmine rida edastab failikirjelduse:        *)
+    /$ ['] Inimene EXECUTE 12 + @ KIRJETYYP !       $/
+   (* J„rgmised 4 rida teatavad:  v“tmekomplekte on 3,  ja edastavad  vastavad
+ kirjetbid. Komplekt 1 on tp KEY1, 2 - KEY2 ja 3 - KEY3.                *)
+    /$ 3 #KOMPLEKT !                                $/
+    /$ ['] KEY1    EXECUTE 12 + @ KEY.ARRAY @ !     $/ 
+    /$ ['] KEY2    EXECUTE 12 + @ KEY.ARRAY @ 4 + ! $/ 
+    /$ ['] KEY3    EXECUTE 12 + @ KEY.ARRAY @ 8 + ! $/ 
+    (* J„rgmised 3 rida edastavad 2 "vaba teksti" tabeli ette v“i taha trkki-
+       miseks ning definitsioonimooduli nime:                               *)
+    /$ 2 #VABA !                                          $/
+    /$ addr T1 TEXT.ARRAY @ ! addr T2 TEXT.ARRAY @ 4 + !  $/
+    /$ addr LEGEND DEFNAME !                              $/
+    END
+    END OKT.
+
+   Vaadeldava Modula-2  translaatori ise„rasuseks on v“imalus llitada mooduli
+teksti Forth-keelseid l“ike ( need paiknevad sulupaari FORTH ja END vahel, sj.
+iga rida m„rgipaari "/$..$/" vahel ).  
+
+                     2.1.4. Failikirjelduse programmimoodul.
+   Failiredaktori initsialiseerimiseks tuleb koostada lisaks definitsiooni- ja
+realisatsioonimoodulitele veel programmimoodul, mille ainus invariantne osa on
+globaalmooduli ( s.o. DEFINITION MODULE ja IMPLEMENTATION MODULE )  imporditav
+nimi. N„iteks:
+    MODULE MARCH;
+    IMPORT OKT;
+    FROM BASE IMPORT MBase;
+    BEGIN
+    MBase;
+    END MARCH .
+   
+   Programmimoodulit sisaldava faili nime laiend on nagu  realisatsioonimoodu-
+lilgi "MOD", niisiis n„ites toodud moodul asub kettal failis MARCH.MOD.
+
+                         2.1.5. Andmebaasifailidest.
+   Iga andmebaasifail ( nii l„hteandmete kui ka resultaatide fail ) tuleb tin-
+gimata kirjeldada ning luua failiredaktori abil. Resultaatfaile genereeritakse
+t””tluse k„igus; seet“ttu tuleb nad luua thjadena, sisestamata neisse ainsat-
+ki kirjet.
+
+                          2.2. Aruannete generaator.
+
+   Nimetagem suvalist andmebaasifailide andmete t””tlemist, mille resultaadiks
+on v„ljundfail(id), p„ringuks. Kuiv“rd iga fail vormistatakse ekraanile toomi-
+seks ja trkiks tabelina ( "aruandena" ),  v“ime nimetada  v„ljundfailide moo-
+dustamist aruannete genereerimiseks. Genereerimiseeskirjad tuleb esitada prog-
+rammimoodulite  kujul.  šhe  programmimooduliga v“ib  genereerida he v“i mitu
+v„ljundfaili.  Nii sisend- kui ka  v„ljundfailide kirjeldused tuleb programmi-
+moodulisse importida. Faili t””tlemiseks vajalikud protseduurid sisalduvad Tšs
+realiseeritud globaalmoodulis  DBF.  Esitame k“igepealt programmimooduli n„ite
+ja seej„rel anname protseduuride kirjeldused. Moodul nimega PASS ( kettal fail
+nimega PASS.MOD ) demonstreerib DBFis sisalduvate  protseduuride kasutamist.
+
+                        2.2.1. Programmimooduli n„ide.
+MODULE PASS;
+FROM DBF IMPORT OpenDBF,InitDBFs,GetByKey,GetByIndex,GetFirst,GetLast,GetPrev,
+                GetNext,PutRecord,CloseDBF,SetKeySequence,MoveRecord;
+FROM OKT IMPORT Inimene;
+VAR tf : BOOLEAN;
+    rec: Inimene;
+    res: Inimene;
+    f1 : WORD;
+    f2 : WORD;
+
+BEGIN
+InitDBFs;     
+tf := OpenDBF('OKT','F.MDB',f1);
+(* Globaalmooduliga OKT antud failikirjelduse p“hjal on loodud kaks faili: si-
+   sendfail F.MDB ja v„ljundfail H.MDB.  Neist esimese parameetrite v„lja aad-
+   ress omistatakse siin muutujale f1, teise oma j„rgmises  programmireas muu-
+   tujale f2. Kui faili avamine “nnestus, siis tf = 1; muidu tf = 0         *)
+tf := OpenDBF('OKT','H.MDB',f2);
+rec.Eesnimi := 'Juku';
+(* Eesnimi on failis F.MDB kirje v“tmeks.  J„rgmise protseduuriga uurime,  kas
+   failis on kirjet inimese kohta, kelle eesnimi on Juku; kui on, siis loetak-
+   se kettalt kirje v„ljale "rec".                                          *)
+tf := GetByKey(f1,rec);
+  IF tf = 1 
+  THEN  MoveRecord(rec,res);
+        tf := PutRecord(f2,res);
+  END;
+(* Kui kirje v“tmega "Juku" leiti, siis kirjutatakse see v„ljalt "rec" v„ljale
+   "res" ning sealt omakorda faili H.MDB. NB! Edaspidi, nagu ka failide avami-
+   sel, eeldame, et "tf" = 1, ja sellele t„helepanu ei p””ra.               *)
+tf := GetByIndex(f1,rec,2);
+(* V„ljale "rec" loetakse failist F.MDB  fsiliselt teisel positsioonil paik-
+   nev kirje.                                                               *)
+tf := GetFirst(f1,rec);
+(* V„ljale "rec" loetakse failist F.MDB esimene kirje,  l„htudes v“tmest "Ees-
+   nimi. J„rjestatust v“tme j„rgi kasutavad ka j„rgnevad protseduurid.      *)
+tf := GetNext(f1,rec);
+(* ...loetakse j„rgmine, s.o. teine kirje...                                *)
+tf := GetLast(f1,rec);
+(* ...loetakse viimane kirje...                                             *)
+tf := GetPrev(f1,rec);
+(* ...loetakse eelmine, s.o. eelviimane kirje...                            *)
+SetKeySequence(f1,0);
+(* Juurdep„„suks faili F.MDB kirjetele valitakse 0-s v“tmekomplekt, s.o. kirje
+   v“tmeks on tema j„rjekorranumber.                                        *)
+tf := GetFirst(f1,rec);
+(* V„ljale "rec" loetakse failist F.MDB fsiliselt esimesel positsioonil asuv
+   kirje.                                                                   *)
+res.Eesnimi := 'Mati';
+res.Nimi := 'Tombak';
+res.Synd.DAY := 25;
+res.Synd.MONYH := 1;
+res.Synd.YEAR := 1942;
+tf := PutRecord(f2,res);
+(* Faili H.MDB sisestati „sjaloodud kirje.                                  *)
+tf := CloseDBF(f1);
+tf := CloseDBF(f2);
+(* Failid F.MDB ja H.MDB suleti.                                            *)
+END PASS.
+ 
+                      2.2.2. Protseduuride kirjeldused.
+
+                              2.2.2.1.InitDBFs
+
+PROCEDURE InitDBFs;
+   šks programmimoodul v“ib  manipuleerida korraga kuni kaheksa andmebaasifai-
+liga.  InitDBFs  teeb ettevalmistusi  nende failide  avamiseks; see protseduur 
+peab programmimoodulis t””tama k“ige esimesena.
+
+                            2.2.2.2. Faili avamine
+
+PROCEDURE OpenDBF ( Legend  : PathTail; FileName : PathStr;
+                    VAR FILE: WORD ) : BOOLEAN;
+   Avab faili "FileName" ja omistab muutujale  FILE v„„rtuseks faili parameet-
+rite tabeli aadressi. Kasutatakse kujul  x := OpenDBF('YYY','XXX.MDB',fi); kui
+avamine “nnestus, on x = 1, kui eba“nnestus, siis x = 0.
+
+PROCEDURE OpenDBFro ( Legend  : PathTail; FileName : PathStr;
+                      VAR FILE: WORD ) : BOOLEAN;
+   Avab modifitseerimiskaitsega faili ( "read only" ).
+
+PROCEDURE OpenByName ( Legend : PathTail; VAR FILE: WORD ) : BOOLEAN;
+   Protseduur v„ljastab ekraanile etteantud failikirjelduse nime, n„iteks, kui
+on kirjutatud " OpenByName('OKT',f2) ", siis ilmuvad ekraanile read: 
+       " Faili kirjeldus on OKT.DEF
+         FAIL: _ "
+ning faili nimi ( ilma laiendita) tuleb sisestada klaviatuurilt. Modifitseeri-
+miskaitsega avamiseks tuleb kasutada j„rgmist protseduuri:
+
+PROCEDURE OpenByNameRO ( Legend : PathTail; VAR FILE: WORD ) : BOOLEAN;
+   
+
+                            2.2.2.3. SetKeySequence
+
+PROCEDURE SetKeySequence ( VAR FILE : WORD; KeyIndex : CARDINAL );
+   Faili loomisel deklareeritakse v“tmekomplektide arv ning kirjeldatakse k“ik
+v“tmekomplektid. Vaikimisi aktiviseeritakse faili avamisel 1. komplekt.  Selle
+protseduuriga aktiviseeritakse komplekt number "KeyIndex". Komplekt 0 t„histab
+v“tmeteta juurdep„„su, s.o. kirjete fsilise paiknemise j„rjekorras.
+
+                              2.2.2.4.  GetByKey
+
+PROCEDURE GetByKey ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Ette antakse  faili  parameetrite tabel ja selle faili kirje  tpi muutuja
+nimi. Eeldatakse, et v“tmev„„rtused  on kirjesse eelnevalt kantud,  arvestades
+aktiivset v“tmekomplekti. Kui selle v“tmega  kirje leiti,  kantakse ta v„ljale
+"Rec" ja v„ljutakse lipuga TRUE ( = 1 ), muidu FALSE ( = 0 ).  NB! Samuti k„i-
+tuvad k“ik prefiksiga "Get" algavad protseduurid.
+
+                              2.2.2.5. GetByIndex
+
+PROCEDURE GetByIndex ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD; 
+                       I : CARDINAL ) : BOOLEAN;
+   Protseduur eirab aktiivset v“tmekomplekti; failist loetakse kirje indeksi -
+- fsilise j„rjekorranumbri j„rgi.
+
+                               2.2.2.6. GetFirst
+
+PROCEDURE GetFirst ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Failist loetakse aktiivse v“tmekomplekti j„rgi esimene kirje.
+
+                               2.2.2.7. GetLast
+
+PROCEDURE GetLast ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Failist loetakse aktiivse v“tmekomplekti j„rgi viimane kirje.
+
+                               2.2.2.8. GetPrev
+
+PROCEDURE GetPrev ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Failist loetakse aktiivse v“tmekomplekti j„rgi eelmine kirje.
+
+                               2.2.2.9. GetNext
+
+PROCEDURE GetNext ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Failist loetakse aktiivse v“tmekomplekti j„rgi j„rgmine kirje.
+
+                              2.2.2.10. PutRecord
+
+PROCEDURE PutRecord ( VAR FILE : WORD; VAR Rec: ARRAY OF WORD ) : BOOLEAN;
+   Faili kantakse v„ljalt "Rec" kirje.
+
+                               2.2.2.11. CloseDBF
+
+PROCEDURE CloseDBF ( VAR FILE : WORD ) : BOOLEAN;
+   Faili sulgemine.
+
+                              2.2.2.12. MoveRecord
+
+PROCEDURE MoveRecord ( VAR R1,R2 : ARRAY OF WORD );
+   R1 ja R2 on identse kirjeldusega kirjetpi  muutujad;  kirje kantakse v„l-
+jalt "R1" v„ljale "R2".
+
+     
+                              2.3. Keskkond.
+
+                               2.3.1. Men.
+   Ssteemi "baaskeskkond" on  Forth, millele on peale ehitatud Modula-2 kesk-
+kond. K„suga   MB  k„ivitatakse programm   MB.COM,  mis aktiviseerib  Modula-2
+keskkonna. Ekraanile ilmub j„rgmine tekst:
+
+                   Modula-2 system. Version 2.0
+                 Tartu University, Estonia. 1989
+
+loGged drive: C:
+Active directory: MB
+
+Work file:
+Main file:
+
+Edit      Compile     Link      Run
+                      crOss Link
+Quit      Directory   Paths     Base comp File edit
+raporT    dblabor rUn
+
+$ _
+
+   M„rk "$" on ssteemi kutsung,  selle j„rel asub  kursor ning  selles  kohas
+saab anda korraldusi - neiks v“ib olla iga v“tmes“na ainus suurt„ht  ( mis ek-
+raanil on kujutatud heledamalt muust tekstist ). šlaltoodud n„ites on aktiivne
+kettaseade "C" ja aktiivne teek "MB". S“nade ( t„htede) semantika on j„rgmine:
+G - loogiline kettaseade;
+A - aktiivne ( alam-)teek;
+W - mooduli Modula-2-keelse teksti nimi;
+M - objektmoodulile omistatav nimi;
+E - p””rdumine programmi NE.COM poole ( parameeter on "W" v„„rtus );
+C - kompilaatori v„ljakutse ( parameetrid on "W" ja "M" v„„rtused );
+L - linkeri v„ljakutse ( parameeter on "M" v„„rtus );
+O - cross-kompilaatori k„ivitamine ( andmebaasissteemis pole kasutatav);
+R - Modula-2-programmi k„ivitamine ( parameeter on "M" v„„rtus );
+Q - Modula-2 t”” l“pp ( naasmine MS-DOSi keskkonda );
+B - Modula-2Base'i  faili  andmekirjelduse kompileerimine ( parameeter on  "M"
+    v„„rtus - programmimooduli nimi );
+F - Failiredaktori  v„ljakutse  ( parameeter on "M" v„„rtus - programmimooduli
+    nimi );
+D - kataloogi vaatamine ( ssteem ksib maski );
+P - tee ( juurkataloog --> vajalik teek ) m„„ramine v“i muutmine;
+T - P„ringumooduli kompileerimine ja linkimine ( mooduli nimi - "M" abil );
+U - P„ringumooduli k„ivitamine lahendamiseks ( mooduli nimi - "M" abil ).
+
+                     2.3.2. Failikirjelduse lisamine.
+ Uue failikirjelduse lisamiseks tuleb teha j„rgmist:
+   I. Transleerida “iges j„rjekorras k“ik kirjeldusmoodulid, iga jaoks:
+   1) vajutada klahvi  "W" - ekraanile ilmub "Work file", vastuseks tuleb anda
+kirjeldusmooduli nimi ( koos laiendiga ".DEF" );
+   2) "M" - "Main file" - sama vastus (s.o. kirjeldusmooduli nimi );
+   3) "C" -  k„ivitub  Modula-2  kompilaator.  Vigade puhul saab neid Modula-2
+keskkonnast v„ljumata parandada, vajutades klahvi  "E" - nii  kutsutakse v„lja
+NE.COM, s.o. tekstiredaktor ( tekst m„„rati kui "Work file"). Paranduste l“pus
+tuleb vajutada klahvi  F3 ja seej„rel "E". Juhtimine antakse Modula-2-le taga-
+si  ( men taastamiseks v“ib vajutada thikut );  uueks  kompileerimiskatseks
+tuleb vajutada taas "C".
+   II. Transleerida samas j„rjekorras ja samuti k“ik realisatsioonimoodulid.
+   III. Kompileerida ja linkida programmimoodul:
+   1) "W" ja "M" - anda programmimooduli nimi, seej„rel "C";
+   2) "B" - kettale kirjutatakse programm XXX.BIN, kus XXX on programmimooduli
+      nimi.
+   IV. Failiredaktori v„ljakutse:
+   1) "F" - k„ivitub Modula-2Base dialoogssteem.
+   V. L“petamine: "Q" - Modula-2 tagastab juhtimise MS-DOSile.
+
+   Juba kirjeldatud ("vana") faili puhul piisab "M" ja "F"-tegevustest. Moodu-
+lite kompileerimise rutiinset t””d v“ib h“lbustada spetsiaalse  transleerimis- 
+mooduli abil; sellekohane n„ide on viimases peatkis ( moodul POLK.MOD ).
+
+
+                        3. Failiredaktor.
+
+   Modula-2Base'i  vahendid v“imaldavad esiteks t””d he faili tasemel ja tei-
+seks,  andmet””tlust  t„ismahus.  Esimene  on  realiseeritud  dialoogrezhiimis
+("failiredaktor"), teise jaoks on standardmoodul DBF.
+   Praegusel  ( sisuliselt silumis-)  kujul tuleb peale Modula-2Base'i sisene-
+mist anda s“na "TLINK", naasmiseks Modula-2-keskkonda aga s“na "BYE" ( nii he
+kui ka teise l“pus tuleb vajutada klahvi "Enter" ). 
+
+                   3.0. Faili kujutamine redaktoris.
+
+   Siin on kaks p“hiv“imalust: esiteks, faili n„idatakse ( ja trkitakse ) he
+tabelina, mille iga rida on 1 andmebaasikirje. Nimetame seda edaspidi failita-
+beliks. Failitabel genereeritakse siis, kui teda kirjeldav kirjetp ei sisal-
+da  he  v„ljana  massiivi, mille elemendid on kirjetpi ja sisaldab POINTER-
+tpi  elementi,  mis viitab antud  kirjetbile  endale ( rekursiivne viit ).
+OKT.DEF-n„ide  defineerib just seda  tpi tabeli. Teine v“imalus: kirjetbis
+on  ( v“imalik, et teiste v„ljade hulgas )  parajasti ks  massiivitpi v„li,
+mille  elemendid on  kirjetpi, ja ei ole  POINTER-tpi v„lja. Nimetame seda
+edaspidi kirjetabeliks.
+   Kui kirje ei sisalda massiivi ega rekursiivset viita, siis garanteerib ss-
+teem  kll dialoogi, kuid ei vormista tabelit  ( ka trkiks mitte, ssteem in-
+terpreteerib k“iki kirjev„lju "vabade aatomitena", nende trkki vt. 4.2 ).
+   Allj„rgnev kirjeldusmoodul (nimega A2.DEF ) defineerib kirjetabeli:
+
+DEFINITION MODULE A2;
+TYPE PAGUN=( pole, reamees, jefreitor, nooremseersant, seersant,
+vanemseersant, vanem, lipnik, nooremleitnant, leitnant, vanemleitnant,
+kapten, major, alampolkovnik, polkovnik, kindral );
+TYPE DATE=RECORD DAY:[1..31];
+                 MONTH: [1..12];
+                 YEAR: [1800..2000];
+          END;
+TYPE Inime=RECORD Eesnimi,Nimi: ARRAY[1..10] OF CHAR;
+                  Synd: DATE;
+                  Zwanije: PAGUN;
+           END;
+TYPE TABEL=RECORD DOK: ARRAY[1..30] OF CHAR;
+                  KUUP: DATE;
+                  T: ARRAY[1..10] OF Inime;
+                  YLEMUS: ARRAY[1..20] OF CHAR;
+           END;
+END A2 .
+
+   Kui realisatsioonimoodulis m„„rata failikirje tbiks "TABEL",  siis on iga
+kirje  trkitav  omaette tabelina,  mille  ette saab trkkida v„ljade "DOK" ja
+"KUUP"nime  ja v„„rtuse;  tabel ise koosneb t„pselt  kmnest reast ( veerud on
+"Eesnimi", "Nimi", "Synd" alamveergudega "DAY", "MONTH" ja "YEAR" ning "Zwani-
+je". Tabeli taha saab trkkida "YLEMUS"-e. M„rkigem, et kirjetabeli defineeris
+ka eelmises n„ites esitatud "ALT.DEF".
+   Kui andmed seda v“imaldavad  ( ridade arv on fikseeritud), siis on soovitav
+moodustada kirjetabelid - nende  t””tlus on failitabelist kiirem, kuiv“rd kir-
+jetabel on tervikuna arvuti operatiivm„lus - kui mahub.
+
+                      3.1. Failiredaktori v“imalused
+
+Failiredaktor v“imaldab teha j„rgmisi t”id:
+1) uue faili avamine, sh.:
+   - failile nime andmine;
+   - vabade tekstide valik ( v“i m„„ramine ) ja paigutus;
+2) kirjete t””tlus, s.t.:
+   - lisamine;
+   - parandamine;
+   - kustutamine;
+   - taastamine;
+   - l„bivaatus ("lappamine");
+   - trkkimine;
+3) t”” k„igus selgitusi ja n“uandeid saada v“imaldab nn. help-ssteem.
+
+                         3.1.1. Uue faili avamine.
+
+                       3.1.1.1. Failile nime andmine.
+   Ssteem ksib faili nime -  see tuleb anda ilma laiendita ( viimase omistab
+Modula-2Base automaatselt -  ".MDB" ), n„iteks  XXX.  Seej„rel n„idatakse kaht
+v“imalust: "Ainult lugemiseks" ja "Lugemiseks ja kirjutamiseks". Kursorijuhti-
+misnoolte abil tuleb valida viimane variant, seej„rel ilmub teade:
+         "Faili  XXX.MDB  ei ole. Loon?" ja variandid "Y | N".
+Vajutage "Y" ja "Enter". ( Faili redigeerimiseks tuleb vastata nimi ja  "Luge-
+miseks ja kirjutamiseks", lappamiseks  - ka trkiks - "Ainult lugemiseks". )
+
+                    3.1.1.2. V“tmekomplektide m„„ramine.
+   V“tmekomplektide arv ja komplektide koosseisud fikseeritakse andmekirjeldu-
+ses: definitsioonimoodulis  vormistatakse iga komplekt  omaette  kirjetbina,
+seejuures tuleb t„ita j„rgmisi n“udeid: esiteks, v“tmete nimed ja  kirjeldused
+peavad olema faili kirjeldava kirje vastavate v„ljakirjelduste t„psed koopiad,
+teiseks - v“ti ei tohi olla alternatiivsete kirjeosade alampuudest  ega reaal-
+arvuline.  Komplektide arv  n antakse realisatsioonimoodulis teada Forth-prog-
+rammi real: /$ n #KOMPLEKT ! $/ ning iga komplekt edastatakse  samas moodulis,
+samuti Forth-lausete abil ( vt. n„idet osas 2.1.3 ).
+  Iga  v“tmekomplekti  jaoks  genereeritakse  ks  nn.indeksfail  ( sisuliselt
+B-puu). Kui n=0, siis ainus juurdep„„s kirjetele toimub salvestamise j„rjekor-
+ranumbrite j„rgi.
+NB! V“tmete unikaalsus pole obligatoorne.  Komplekt nr. 0 lisatakse vaikimisi;
+see tagab juurdep„„su kirjetele nende sisestamise j„rjekorras.
+
+                           3.1.1.3. Vabad tekstid.
+   Nii faili- kui ka kirjetabeli puhul saab realisatsioonimoodulis teatada ta-
+beli ette v“i taha trkitavate nn. vabade tekstide arvu ja vaikimisi-v„„rtusi.
+Tekstid  trkitakse  soovitud kujul soovitud ridadele.  Tekste saab t”” k„igus
+muuta, ent nende arvu enam suurendada ei saa.
+   Kirjetabeli korral, kui kirjes on  peale  kirjete massiivi veel muid v„lju,
+on v“imalus noid v„lju trkkida: neid, mis on kirjeldatud enne massiivi, tabe-
+li ette ja teisi tabeli taha. Ssteem n„itab igahte eraldi ja annab v“imaluse
+otsustada, kas antud v„lja trkkida v“i mitte, ja kui trkkida, siis kuhu, mis
+shriftis ja "paksusega", kas v„lja nime trkkida v“i ei, kas teha allakriipsu-
+tust  v“i ei ning saab m„„rata reavahe.  NB! K“iki neid parameetreid ( sh. se-
+da, kas trkkida v“i ei ) saab hiljem t”” k„igus muuta. K“ik muudatused kirju-
+tatakse kettale, kui fail oli avatud nii lugemiseks kui ka kirjutamiseks.
+   "Vabade tekstide"  jaoks  pakutakse samu v“imalusi. Mainigem, et iga teksti
+piirpikkus on 255 m„rki.
+   Detailsemalt vt. trki juhtimist osas 4.
+
+                         3.1.2. Kirjete t””tlus
+
+                           3.1.2.0. P“himen.
+   See  kujutab endast tabelit, kus kolm lemist rida  edastavad  jooksvat in-
+fot ( faili nimi, loomise aeg, jooksva  kirje number ja kirjete arv, rezhiim -
+ainult  lugemiseks  v“i lugemiseks ja  kirjutamiseks -  ja kirje pikkus ) ning
+lej„„nud kuus rida annavad valikuv“imalused:
+1) kas t””delda kirjeid kshaaval v“i tsklis ( viimane  sobib  nt. kustutami-
+seks, taastamiseks v“i trkiks );
+2) n„htavalt - siis n„idatakse faili- v“i kirjetabelit - v“i varjatult;
+3) "Lappa",  "Lisa" ja  "Taasta".  Esimene m„„rab olemasoleva failitabeli nor-
+maalrezhiimi ( lisamine  sinna  toimub tabeli redigeerimise k„igus ), teine on
+m“eldud  uue failitabeli redigeerimise alustamiseks v“i uu(t)e kirjetabeli(te)
+lisamiseks,  viimane  on m“eldud  varemkustutatud  kirjete taastamiseks m“lema
+tabeliliigi jaoks.
+4) "N„ita",  "Trki"  ja "Kustuta". "N„ita" v“imaldab tabeli normaalt””tlust -
+nii  vaatamist  kui  ka  ( kui  faili rezhiim lubab )  redigeerimist,  "Trki"
+initsialiseerib  tabeli trki  ning  "Kustuta" m„rgib kirjetabeli eemaldatuks.
+( Failitabelist saab kirjeid kustutada nii: p„rast  "F4" vajutamist saate m„r-
+kida  1  ekraani  piires kustutatavad  kirjed, liikudes tabelis klahvide "nool
+les" ja  "nool alla"  abil ning neid fikseerida "Enterit" vajutades. Kirje(d)
+kustutatakse p„rast "Esc" vajutamist. )  
+5) J„rgmine  rida  v“imaldab  fikseerida kirjete lappamise alguspunkti ja suu-
+na. Siin on failitabeli ja kirjetabeli(te) vahel m“ningaid erinevusi.
+
+            3.1.2.0.1. Otsimissuuna m„„ramine failitabeli puhul.
+    - Esimene:  tabeliread paigutatakse aktiivse v“tmekomplekti v“tmev„„rtuste
+ kasvavas j„rjekorras;
+    - Viimane: kahanevas j„rjekorras;
+    - J„rgmine ja Eelmine - pole kasutatavad;
+    - Index | v“ti :  kui aktiivse  v“tmekomplekti  number pole  0, siis annab
+ssteem  v“imaluse sisestada v“tmev„„rtused ( iga rea l“pus "Enter", komplekti
+l“pus "Esc" ) ning tabelis n„idatakse kirjeid alates fikseeritud kirjest "Esi-
+mese" v“i  "Viimase"  abil m„„ratud j„rjekorras.  Kui komplekti nr. on 0, siis
+ksitakse "l„htekirje" j„rjekorranumbrit.
+   - Sama: pole kasutatav;
+
+           3.1.2.0.2. Otsimissuuna m„„ramine kirjetabeli puhul.
+   - Esimene:  kirjete  l„bivaatust alustatakse aktiivse v“tmekomplekti v“tme-
+v„„rtuste kasvavas j„rjekorras, so. n„idatakse esimest kirjet;
+   - Viimane: kahanevas j„rjekorras, so. n„idatakse viimast kirjet;
+   - J„rgmine: vaikimisi llitatakse see rezhiim sisse p„rast "Esimese"  t„it-
+mist; 
+   - Eelmine: vaikimisi p„rast "Viimase" t„itmist;
+   - Index | v“ti: n„idatakse nii fikseeritud kirjet; edasi v“ib liikuda "Eel-
+mise" v“i "J„rgmise" abil;
+   - Sama: n„idatakse uuesti jooksvat kirjet.
+NB!  V“tmekomplekti vahetamiseks tuleb vajutada "F2" - ssteem ksib ja sises-
+tab uue komplekti numbri.
+
+                    3.1.2.0.3. Dialoogi l“petamine.
+   "Jatka" -  see variant on aktiivne kogu Modula-2Base t”” ajal; "L“peta" t„-
+hendab ssteemist v„ljumist. Samav„„rne on klahv "Esc".
+
+                            3.1.2.1. Kirjeredaktor.
+   Kirjetabeli  korral tuuakse ekraanile kirjev„ljade nimekiri (iga neist oma-
+ette real ).  Kursori les- ja allaliigutamisklahvide abil saab fikseerida ak-
+tiivse rea,  kuhu  saab tippida  uue v„„rtuse  v“i muuta olemasolevat. Valitud
+v„„rtusv„lja pikkuse m„„rab andmekirjeldus;  v„li  kujutatakse inverteeritult.
+Aktiivse  v„lja kirjeldust on v“imalik n„ha, vajutades "F2" ( sama klahv l“pe-
+tab andmekirjelduste n„itamise ).  V„„rtusvaruga v„lja v„„rtust saab sisestada
+"F3"  abil: ssteem n„itab v„„rtuste tabelit, kursorijuhtimisnoolte abil tuleb
+liikuda soovitud v„„rtuseni ja fikseerida see klahviga "Enter".
+   Nagu juba ”eldud, vormistatakse tabelina kirje koosseisus olev kirjete mas-
+siiv;  tabeli  ekraaniletoomiseks tuleb tolle massiivi aktiivne olles vajutada
+"F4".  Sama  tuleb  teha failitabeli korral;  sel puhul on esialgu ainuke v„li
+ekraanil nimega  "FILE", see tuleb aktiviseerida ning vajutada "F4". Detailse-
+malt on redigeerimisv“imalusi  ja vastavaid juhtklahve kirjeldatud osas 5 ning
+lhidalt  "help-sseemis", mis k„ivitub p„rast klahvile  "F1" vajutamist ( vt.
+3.1.3. ).
+   Kirje t””tluse l“petamiseks tuleb vajutada  "Esc", selle  toimel  ksitakse
+kirjutamisrezhiimis olles  ( kui kirjes | failis )  on  tehtud  parandusi, kas
+soovite  kirjet | faili  salvestada. Kui jah, tuleb vastata  "Y",  muidu  "N".
+Seej„rel naastakse p“himensse.
+   Failitabeli korral hoitakse arvuti m„lus ainult ekraanil n„htavaid kirjeid,
+seet“ttu  kontrollitakse  iga lehekljevahetuse  v“i ka  ekraaniscrolli korral
+v“imalikke parandusi ning nende avastamisel salvestamisluba.
+   NB!  Kui  olete  vastanud  salvestamisksimusele "N", pole tehtud parandusi
+enam v“imalik p„„sta: taastada saab ainult kettakirjeid.
+
+                            3.1.3. Help-ssteem.
+   See on m“eldud Modula-2Base'i kasutaja abistamiseks. Ssteem k„ivitub klah-
+vi "F1" toimel ja pakub p“himens 4 v“imalust:
+  1) Ssteem  -  n„idatakse k„esolevat lhilevaadet.  Sisukorrast valida saab
+nooltega les ja alla ning nupuga  "Enter", leheklgede vahetamiseks "Page Up"
+ja  "Page Down", l“ppu  ja algusse samad koos  Ctrl-klahviga, ridade scrolliks
+nooled les ja alla ning v„ljumiseks "Esc".
+  2) Legend  - n„idatakse andmekirjeldusmooduli ( definitsioonimooduli ) teks-
+ti NE.COM vahendusel. Tekst tuleb ekraanile suvalise mittefunktsionaalse klah-
+vi vajutamisel;  lappamiseks  v“ib  kasutada klahve  "Page Up" ja  "Page Down"
+( j„rgmine v“i eelmine leheklg ) ning samu koos "Control"-klahviga  ( esimene
+v“i viimane leheklg ). Naasmiseks tuleb vajutada j„rgem””da "F3", "Q" ja vas-
+tuseks hoiatusele  "Y". ( NB! Kuiv“rd NE.COM v“imaldab vaadatavat teksti suva-
+liselt muuta, siis tuleb seda k„sitseda vajaliku ettevaatusega. Kui NortonEdi-
+tor ei kuulu Teie igap„evaste t””vahendite hulka, siis v“ite tema v“imalustest
+levaate saada  NE keskkonnas olles klahvi "F1" abil. Muide, k„esoleva juhendi
+saate v„lja trkkida nii: "F7", seej„rel "E", uuesti "F7", "P" ja "Y" );
+  Kui legendi pole varem kordagi  vaadatud, siis ksib  ssteem definitsiooni-
+mooduli nime ( vastata tuleb ilma laiendita "DEF" ! ) ja salvestab selle.
+  3) Editor  - n„idatakse funktsionaalsete klahvide v“imalusi ( vt. osa 5 );
+  4) Tagasi  - naastakse kirjeredaktorisse ( samav„„rne on "Esc" ).
+
+
+                             4. Tabeli trkk.
+   Tabeli v“ib kas kohe v„lja trkkida  v“i kirjutada ta kettale  -  sel juhul
+loob ssteem faili XXX.PRT ( kus XXX on andmebaasifaili nimi ); v„lja trkkida
+saab selle faili kas MS-DOSi k„suga COPY XXX.PRT PRN v“i TYPE XXX.PRT>PRN. Va-
+jalik seade tuleb valida  enne trkik„su andmist v“tme  "F3"  abil.  Vaikimisi
+eeldatakse  kohest  trkki  ( ekraani alaserval olevas v“tmereas on "F3 >PRN",
+"F3" vajutades ilmub sinna "F3 >DSK". Klahv toimib llitina ).
+
+                             4.1. Tabel "ise".
+                               4.1.1. Men.
+   Peale trkik„su andmist p“himens n„itab ssteem tabelit,  mille abil saab
+muuta faili loomisel fikseeritud atribuute ( "[]"-sulgudes on vastavad MS-DOS-
+terminid) :
+
+LIIK   Tavaline  Rasvane     Topelt         Topelt ja rasvane
+[      regular   emphasized  double-strike  emphasized and double-strike ]
+KIRI   Standard  Tihe        Lai            Poollai
+[      regular   condensed   enlarged       enhanced                     ]
+THED  draft pica    draft elite
+KURSIIV  Ei      Jah
+[                italic                                                  ]
+ALLAKRIIPSUTUS     Ei            Jah
+[                            underlined                                  ]
+REAVAHE  1/8 tolli    7/72 tolli   1/6 tolli    
+PRINTER    Kitsas       Lai
+LK-JAOTUS  Jah          Ei
+KAHELE KšLJELE    Jah            Ei
+Vasak „„r   0   Parem „„r  79  Lk. pikkus 50 rida  L“ppu 2 thja rida
+VABAD READ      Aatomid     Tekstid      Tabel
+
+  Ridu ja veerge  saab valida  kursorijuhtimisklahvide abil;  aktiivne variant
+kujutatakse inverteeritult. Tabeli trkkimist alustatakse p„rast klahvile "En-
+ter" vajutamist; kui trkkida ei soovi, tuleb vajutada "Esc". Siintoodud atri-
+buudid kehtivad "tabeli enda" kohta, mitte ette ega taha trkitavate nn. vaba-
+de tekstide  kohta. Viimaseid saate muuta, liikudes kursoriga viimasele reale.
+"Atomid"  t„histab  tabelieelseid  ja -j„rgseid kirjev„lju - nende s„ttimiseks
+tuleb  vastavas lahtris olles vajutada "Enter". Samuti saab toimida vabade ri-
+dade ( "Tekstid" ) puhul ( vt. osa 4.2. ).
+
+                            4.1.2. Trkirezhiim.
+   Trkirezhiim  s“ltub sellest, kas tabel mahub laiuti hele paberile v“i ei,
+seet“ttu on ssteemil  vaja teada, kas Teil on "kitsas" v“i "lai" printer. Kui
+tabel ei mahu laiuti  hele lehele v“i lindile, siis trkitakse ta nn. paanide
+kaupa. Reavahe valikul tuleks muuhulgas arvestada printeritbiga: FX-850 t“m-
+bab pidevad vertikaaljooned ka normaalreavahe ( 1/6" ) puhul, muudel printeri-
+tel  selliste  joonte  saamiseks tuleb valida 7/72" - sel juhul trkitakse iga
+rida  2 korda:  esiteks "rida ise", teiseks vertikaaljoonte rida kahe p„risrea
+vahele.  Atribuuditabeli  eelviimane rida pakub v“imalusi tabeli paigutamiseks
+ja leheklgedeks jaotamiseks ( kui "LK-JAOTUS" = "Jah" ). Kursoriga tuleb lii-
+kuda  vajalikku  lahtrisse, vajutada  "Enter",  tippida arv ja vajutada uuesti
+klahvi "Enter".
+   Kui Teil on lehtpaber, v“ite valida rezhiimi, mille korral trkitakse tabel
+lehe m“lemale kljele; seejuures lehe tagumisel kljel vahetatakse atribuutide
+"Vasak „„r" ja "Parem „„r" v„„rtused - et saaksite  tabeleid  lihtsalt  k”ita.
+K“ik muudatused fikseeritakse faili  "Master-kirjes"  ja kehtivad ka j„rgmiste
+seansside ajal ( vt. osa 7 ).
+
+   4.2. Tabeli ette ja taha trkitavad tekstid ( "Aatomid" ja "Tekstid" )
+   Iga "aatomi" v“i vabalt valitava teksti jaoks n„idatakse - kui eelmises ta-
+belis valiti nende muutmise variant - tabelit, mis on suuresti  sarnane eelmi-
+sega, ent erineb j„rgmiste seikade poolest:
+1) tuleb vastata ksimusele "Kas soovite?". "N"  t„hendab, et  vastavat teksti
+( enam ) ei trkita. "Y" s„ilitab ( v“i taastab ) teksti ning  annab v“imaluse
+atribuutide muutmiseks.
+2) reavahe valikul on t„iendav v“imalus "n/216 tolli" - selle kasutamiseks tu-
+leb valida too lahter, vajutada "Enter", arv ja uuesti  "Enter".  NB! tegeliku
+reavahe m„„rab ritta viimasena paigutatud ( parempoolseima ) v„lja reavahe.
+3) vaba teksti saab paigutada nii tabeli ette kui ka taha; aatomi puhul m„„rab
+selle andmekirjeldus. 
+4) iga aatomi v“i teksti jaoks tuleb fikseerida rea number -  see  on t„isarv,
+0,1,... aatomi ja 1,2,... teksti jaoks. šhele ja samale  reale v“ite paigutada
+suvalises j„rjekorras nii palju tekste, kui mahub  ( tabeli laiuse m„„rab and-
+mekirjeldus ning seda n„idatakse trki p“himens ).  "šle otsa" minevad teks-
+tid l“igatakse maha. Ja veel: tabeli laiuse hik on 1  trkim„rk; seega tabeli
+fsiline laius s“ltub valitud "KIRJAST" ja "THTEDEST".  Kitsa printeri puhul
+on leheklje maksimaalne laius proovitud printeritel j„rgmine:
+          KIRI  =    standard  condenced    enlarged    enhanced
+THED =   pica           80       132          40          68
+          elite          96       160          48          81
+5) Iga hiku rittapaigutuse saate m„„rata atribuudiga "PAIGUTUS":  kas rea va-
+sakusse v“i  paremasse otsa,  keskele, eelmise  j„rele  ( "Sappa" ) v“i alates
+sobivast positsioonist n ( 0 <= n <= tabeli laius - hiku pikkus ). n sisesta-
+takse nii: "Enter", arv "n", "Enter".
+6) vaba teksti sisestamiseks tuleb vastavas reas olles vajutada korraks klahvi
+"nool paremale"; sisestamise l“petab "Enter".
+7) šhiku atribuutidevaliku saate l“petada  rea alguses olles "Enterit" vajuta-
+des.
+                                4.3. Printer.
+   Tabelite trkkimisel on oluline, et korrektselt trkitaks nn. pseudograafi-
+ka m„rke (vertikaal- ja horisontaaljooned, nende ristumised ja nurgad ), "t„p-
+pidega t„hti" ning slaavi alfabeeti. Slaavi alfabeet ei kuulu htegi standard-
+sesse t„hefondi ning seet“ttu tuleb suvalise printeri puhul kasutada trkitei-
+sendust - siis, kui  tahetakse  trkkida  midagi vene keeles. Muude lesannete
+korral s“ltub teisendusvajadus printeri tbist.
+   Ssteem  toetab  praegu ainult Epson-tpi printereid. Paremad neist ei va-
+ja h„„lestamist (n„iteks FX-850 ), "keskmised" - need, mis on laaditavad, n„i-
+teks FX-85, MT-81 v“i FX-800, vajavad laadimist ja trkiteisendust ning  m“ned
+tbid (FX-80 ) pole ldse laaditavad. Kui Teie printer on laaditav ning vajab
+h„„lestamist, siis on soovitav trkiteisendaja k„ivitamine ning t„hefondi laa-
+dimine lisada algpaigalduse k„sufaili AUTOEXEC.BAT:
+...
+setprint russs.esc
+trykk
+...
+   Kui algpaigalduse ajal oli printer millegip„rast v„lja llitatud ja  andme-
+baasit””tluse  k„igus  soovite tabeleid trkkida, siis printeri h„„lestamiseks
+andke  trkik„sk v„ljallitatud printeriga ning sisse llitage too alles siis,
+kui ssteem teeb selleks ettepaneku; p„rast seda vastake "Y". 
+  Sel juhul, kui trkiteisendus pole kas vajalik v“i v“imalik, tuleb ksimuse-
+le, kas Teie printer on laaditav, vastata "N".
+   Printeri h„„lestusprogrammide autor on T“nis Kelder. 
+
+               5. Funktsionaalsed klahvid. Redigeerimine.
+
+                        5.1. Klahvid F1..F10.
+    P“himen           Trkimen   Kirjetabel          Failitabel
+    ---------           ----------   ----------          ----------
+F1  Help                Help         Help                Help 
+F2  V“tmekomplekti      -            Alusta | l“peta v„ljakirjelduste n„ita-
+    vahetus                          mist
+F3  Trki mbersuunam.  -            Anna v„„rtusvarutabel
+F4  -                   -            Ekraanile kirjete   Reakustutusrezhiimi
+                                     massiivile vastav   algus ( vt. 5.5. )
+                                     tabel        
+F5  -                   -            Fikseeri kirje      Fikseeri leheklg
+F6           Akende v„rvide n„itamine ja muutmise v“imaldamine 
+F7  -                   -            Tabeliridade kopeeri-        -
+                                     mise algus
+F8  -                   -            Tabeliveeru v„„rtus          -
+                                     paljundatakse igasse
+                                     ritta
+F9                                   V„lja v„„rtus kustutatakse kursorist ala-
+                                     tes kuni v„lja l“puni
+                             
+F10 -                   -            Taastab F5-ga fiksee- Taastab F5-ga fiks.
+                                     ritud kirje seisu     leheklje
+
+
+5.2. Kursorijuhtimisklahvid, "Enter", "Insert" ja "Escape". [ "Control" = ^ ].
+
+         Mend ja v„„rtusvarutabel     Kirje v“i fail
+         --------------------------     --------------
+-->      Aktiviseeri parempoolne naa-   Kursor aktiivsel v„ljal  1 posits. pa-
+         ber                            remale
+<--      Aktiviseeri vasakpoolne naa-   Kursor aktiivsel v„ljal  1 posits. va-
+         ber                            semale
+les     Aktiviseeri lemine naaber     Aktiviseeritakse eelmise rea v„li
+alla     Aktiviseeri alumine naaber     Aktiviseeritakse j„rgmise rea v„li
+Enter    Valimise l“pp                  V„„rtuse sisestamine, aktiivseks j„rg-
+                                        mine v„li
+                                        Failitabelist kustutamisel: m„rgi rida
+^Enter            -                     V„„rtuse sisestamine, aktiivseks tabe-
+                                        li eelmise veeru v„li
+Insert            -                     Vahelekirjutamisrezhiim  sisse | v„lja
+Esc      P“himens: seansi l“pp        Redigeerimise | lappamise l“pp,  naas-
+         Trkimens: ignoreeri         mine p“himensse
+         V“tmete sisestamisel: k“ik!    Failitabelist kustutamisel: kustutami-
+                                        se l“pp
+
+               5.3. "Home", "End", "Page Up" ja "Page Down".
+   Selle rhma  klahve  saab kasutada  ainult kirje  ( v“i faili ) lappamisel.
+Klahvi "Control" t„histab m„rk ^.
+Home        Aktiviseeritakse ekraani esimese rea element
+End         Aktiviseeritakse ekraani viimase rea element
+^Home       Aktiviseeritakse tabeli jooksva rea esimene veerg
+^End        Aktiviseeritakse tabeli jooksva rea viimane veerg
+Page Down   N„itab j„rgmist ekraani
+Page Up     N„itab eelmist ekraani
+^Page Down  N„itab viimast ekraani
+^Page Up    N„itab esimest ekraani
+
+                               5.4. Sisestamine.
+   V„lja v„„rtuse sisestamiseks piisab aktiivselt v„ljalt lahkumisest suvalise
+seda v“imaldava klahvi abil  -  muidugi juhul, kui tolle v„lja v„„rtus muutus.
+V„„rtusvaruga v„lja v„„rtust saab sisestada kahel viisil:
+1) "F3" vajutades n„idatakse v„„rtusvarutabelit. Kursorijuhtimisklahvide  abil
+saate valida sobiva v„„rtuse ning selle sisestada "Enteriga";
+2) kui vajutada m“nda t„hte v“i numbrit, siis v„ljastatakse kll hoiatus,  ent
+seej„rel  n„idatakse aktiivsel v„ljal v„„rtusvaru esimest elementi; "-->" n„i-
+tab j„rgmist, "<--" eelmist. Vajaliku saate fikseerida "Enteri" abil.
+   Kui ritate sisestada andmekirjeldusega vastuolus olevat v„„rtust, siis an-
+nab ssteem veateate - sellele tuleb vastata "Enter" ning saab anda uue  v„„r-
+tuse.
+NB! FAILITABELISSE UU(T)E KIRJR(TE) LISAMISEKS  ON SOOVITAV  VALIDA  EELNEVALT
+V“TMEKOMPLEKT nr 0 !
+
+                               5.5. Kustutamine.
+1) šhe v„lja piires on j„rgmised v“imalused:
+Delete    Kustutab kursori alt he smboli, parempoolsed  smbolid  nihkuvad 1
+          koha v“rra vasakule;
+BackSpace Kustutab smboli kursori eest;
+F9        Kustutatakse k“ik smbolid kursorist kuni v„lja l“puni;
+^F9       Kustutatakse aktiivne v„li.
+2) Kirjetabeli kustutamine: tuleb vajutada samaaegselt klahve  "Alt" ja  "F9".
+   Teine v“imalus -  p“himens olles tuleb tellida vastav t””. Neil v“imalus-
+tel on p“him“tteline erinevus: AltF9 "nullib" k“ik kirjev„ljad ja kui see kir-
+je salvestada, siis ongi ta thi.  P“himen alt  kustutamine ei muuda  kirjes
+midagi; kirje lihtsalt eemaldatakse  aktiivsete kirjete  ahelast ja on t„iesti
+taastatav.
+3) Kustutamine failitabelis. Iga niisuguse tabeli rida on ks andmebaasikirje;
+selle kustutamine on samav„„rne kirje kustutamisega p“himen alt, s.t., kirje
+on taastatav.  Kustutamiseks tuleb vajutada  "F4",  misj„rel  saate klahvidega
+"alla" ja "les" liikuda vajalikele ridadele ning valida neid "Enteriga". Sel-
+le t”” l“petab "Esc". 
+   NB! FAILITABELIST KUSTUTAMISEL ON SOOVITAV EELNEVALT  VALIDA  V“TMEKOMPLEKT
+nr. 0 !
+
+ 
+                                6. Failid.
+
+                           6.1. Ssteemsed failid.
+   Modula-2 ja Modula-2Base'i t””ks on vajalikud j„rgmised failid:
+                           6.1.1. Programmifailid.
+- MB.COM               - k„ivitab Modula-2-ssteemi;
+- M2COMP.COM           - Modula-2 kompilaator;
+- M2LINK.COM           - Modula-2 linker;
+- SHOWREC.COM          - Failiredaktor;
+- LOADR.COM            - pikkade .COM-failide laadija;
+- LOADF.COM            - laadija;
+- LOADLIST.COM         - impordiprogramm;
+- NE.COM               - Norton Editor;
+- SETPRINT.EXE         - laadib Epson-tpi printerisse sobiva t„hefondi;
+- TRYKK.COM            - residentne trkiteisendaja;
+- TSWITCH.COM          - trkiteisendaja sisse|v„lja llitaja.
+
+                    6.1.2. Modula-2 translaatori abifailid.
+- MOD2VI.SCR           - keele Modula-2 sntaksireeglid.
+- MOD2VI.CDE, MOD2VI.CON, MOD2VI.GRA, MOD2VI.HGR, MOD2VI.HLX, MOD2VI.LCL,
+  MOD2VI.LMV, MOD2VI.MSG, MOD2VI.PAR, MOD2VI.PRM, MOD2VI.SEM, MOD2VI.SYM,
+  MOD2VI.CTB.
+
+                               6.1.3. Abifailid.
+- RUSSS.ESC            - T„hefond SETPRINT.EXE jaoks;
+- HELP.M2B, HELP.LIN   - k„esolev lhijuhend koos abifailiga;
+- FARBE.BIN            - Failiredaktori v„rvitabel ( vajalik ainult v„rvimoni-
+                         tori puhul ).
+
+                              6.2. Moodulifailid.
+                           6.2.1. Standardmoodulid.
+   Standardmoodulid on ASCII, FIO, INOUT, IO, STR, TERMINAL, BASE ja DBF. Iga-
+ks neist kujutatakse failides nimelaienditega  DEF,  MOD, OBD, OBI, DBJ, IBJ,
+ja BIN.
+
+                            6.2.2. Globaalmoodul.
+   Olgu globaalmooduli nimi XXX. See esitatakse kahe failina:
+- XXX.DEF              - definitsioonimooduli Modula-2-tekst;
+- XXX.MOD              - realisatsioonimooduli Modula-2-tekst.
+   Nende  transleerimise ja  linkimise  tulemusena  luuakse j„rgmiste nimedega
+failid:
+- XXX.OBD              - definitsioonimooduli Forth-tekst;
+- XXX.DBJ              - definitsioonimooduli koodifail;
+- XXX.OBI              - realisatsioonimooduli Forth-tekst;  
+- XXX.IBJ              - realisatsioonimooduli koodifail;
+
+                     6.2.3. Failiredaktori programmimoodul.
+   Olgu programmimooduli nimi PPP. Talle vastavad j„rgmised failid:
+- PPP.MOD              - programmimooduli Modula-2-tekst;
+- PPP.OBM              - programmimooduli Forth-tekst; 
+- PPP.BIN              - programmimooduli lingitud koodifail.
+
+                    6.2.4. P„ringuprogrammi programmimoodul.
+   Olgu programmimooduli nimi PPP. Talle vastavad j„rgmised failid:
+- PPP.MOD              - programmimooduli Modula-2-tekst;
+- PPP.OBM              - programmimooduli Forth-tekst; 
+- PPP.MBJ              - programmimooduli koodifail; 
+- PPP.BIN              - programmimooduli lingitud koodifail.
+
+                               6.3. Andmefailid.
+   Olgu  failiredaktori  abil  loodud  faili nimi YYY.  Ssteem  lisab sellele
+laiendi "MDB",  seega faili t„isnimeks saab  YYY.MDB ning kui defineeritakse 3
+v“tmekomplekti, siis luuakse 3 indeksifaili nimedega YYY.IX1, YYY.IX2  ja YYY.
+IX3. Fail  YYY.MDB koosneb nn. "Master"-kirjest, mis sisaldab kogu faili kohta
+k„ivat psi- ja jooksvat  informatsiooni ning sisestatud fikseeritud pikkusega
+kirjetest. Iga kirje koosneb fikseeritud pikkusega p„isest ning andmev„ljadest
+( vt. osa 7 ). Kui trkk on suunatud kettale, siis on tabel failis YYY.PRT.
+   Kui  Teil  on v„rvimonitor,  siis kirjutab ssteem kettale veel he faili -
+FARBE.BIN,  milles  s„ilitatakse  akende  v„rve;  neid  saate suvaliselt muuta
+( sellekohast dialoogi alustab klahv  "F6" ) ning  uued  v„rvid  fikseeritakse
+FARBE.BINis.  See fail pole seotud hegi  konkreetse  andmebaasifailiga,  vaid
+Teie arvutile paigaldatud Modula-2Base'i eksemplariga.
+
+                          7. Andmefailide struktuur.
+
+                              7.1. Master-kirje.
+ 0) aktiivsete kirjete ahela viimase kirje number;
+ 4) aktiivsete kirjete ahela esimese kirje number;
+32) kirje pikkus;
+36) kirje p„ise pikkus;
+38) aktiivse v“tmekomplekti number;
+40) master-kirje pikkus;
+42) kustutatud kirjete ahela viit;
+44) kirjete arv;
+46) kustutatud kirjete arv;
+48) faili loomise kuup„ev;
+56) faili loomise kellaaeg;
+64) v“tmekomplektide tabeli viit;
+66) v“tmekomplektide arv;
+68) "vabade aatomite" ahela viit;
+70) "vabade tekstide" ahela viit;
+72) trkiparameetrid;
+92) andmekirjeldusmooduli nimi ( pikkusbaidiga s“ne ).
+
+   J„rgnevad trkiahelate  ( s.o., vabade aatomite ja tekstide ahelate)  llid
+ja v“tmekomplektide tabel. 
+
+   Trkiparameetrid ( 72..91 ) on paigutatud j„rgmiselt:
+72) liik [ 1 - regular,  2 - emphasized,  3 - double-strike,  4 - emphasized &
+           double-strike ];
+73) kiri [ 1 - regular, 2 - condensed, 3 - enlarged, 4 - enhanced ];
+74) t„hed [ 1 - draft pica, 2 - draft elite ];
+75) kursiiv [ 1 - ei, 2 - jah ( italic)];
+76) allakriipsutus [ 1 - ei, 2 - jah ];
+77) reavahe [ 1 - 1/8", 2 - 7/72", 3 - 1/6" ];
+78) printer [ 1 - kitsas, 2 - lai v“ll ];
+79) leheklgedeks jaotus [ 1 - jah, 2 - ei ];
+80) kahele kljele [ 1 - ei, 2 - jah ];
+81) vasak „„r [ 0..160 ];
+82) parem „„r [ 1..255 ];
+83) leheklje pikkus [ 1..127 ];
+84) thjade ridade arv leheklje l“pus;
+85) leheklje laius;
+86) paani laius;
+87) vabatekstide arv;
+88) vabade aatomite arv;
+89) veergude ldpealkiri [ 1 - jah, 2 - ei ];
+90) leheklje pikkus 1/216"-des ( 2 baiti ).
+
+   Trkiahela lli formaat on j„rgmine:
+ 0) viit j„rgmisele llile ( v“i 0 );
+ 4) aatomi j„rjekorranumber ( 0, kui vaba tekst );
+ 6) aatomi nime trkk [ 1 - jah, 0 - ei ];
+ 7) rea number;
+ 8) paigutus [ 1 - vasakule, 2 - paremale, 3 - keskele, n > 3 - alates n-ndast
+               positsioonist ];
+10) liik [ 1 - regular,  2 - emphasized,  3 - double-strike,  4 - emphasized &
+           double-strike ];
+11) kiri [ 1 - regular, 2 - condensed, 3 - enlarged, 4 - enhanced ];
+12) t„hed [ 1 - draft pica, 2 - draft elite ];
+13) kursiiv [ 1 - ei, 2 - jah ( italic)];
+14) allakriipsutus [ 1 - ei, 2 - jah ];
+15) reavahe [ 1 - 1/8", 2 - 7/72", 3 - 1/6" n > 3 - n/72" ];
+16) trkkida: [ 1 - tabeli ette; 2 - tabeli taha ];
+17) kas trkkida? [ 1 - jah, 0 - ei ];
+18) vaba teksti pikkus ( aatomi puhul 0 );
+19) vaba tekst.
+   
+   V“tmekomplektide tabel koosneb  n reast  ( n = komplektide arv ), igas reas
+on kaks veergu: viit ekraanimaketile ja viit v“tme-eeskirja vektorile.
+   V“tme-eeskirja vektor on j„rgmise formaadiga:
+ 0) v“tmev„„rtuste konkatenatsiooni pikkus;
+ 2) v“tmete arv;
+ 4) 1. v“tmev„„rtuse pikkus;
+ 6) 1. v“tmev„„rtuse suhtaadress kirjes;
+...
+
+                           7.2. Kirje p„ise formaat.
+ 0) loomise kuup„ev;
+ 8) loomise kellaaeg;
+16) eelmise  kirje number ( -1 esimeses kirjes );
+20) j„rgmise kirje number ( -1 viimases kirjes );
+32) -1 aktiivses kirjes; kustutatud kirjes j„rgmise kustutatud kirje number;
+36) kirje number.
+
+                               8. N„ide.
+   Esitame l“puks he tervikn„ite,  mis kll kordab  paljuski juba toodud n„i-
+teid, ent peaks h“lbustama levaatlikuma mulje saamist.
+                         8.1. Definitsioonimoodul.
+                         -------------------------
+DEFINITION MODULE APR;
+TYPE PAGUN=( reamees, jefreitor, nooremseersant, seersant, vanemseersant,
+vanem, lipnik, nooremleitnant, leitnant, vanemleitnant, kapten, major,
+alampolkovnik, polkovnik, kindralmajor, kindralleitnant, kindralpolkovnik,
+armeekindral, marssal );
+TYPE SUGU=(Mees,Naine);
+TYPE DATE=RECORD DAY:[1..31];
+                 MONTH: [1..12];
+                 YEAR:[1800..2000];
+          END ;
+TYPE VIIT=POINTER TO Inime;
+TYPE TEXT=ARRAY[1..256] OF CHAR;
+TYPE Inime=RECORD
+  Eesnimi,Nimi: ARRAY[1..10] OF CHAR;                                    
+  Synd: DATE;
+  Zwanije: PAGUN;
+END;
+
+TYPE File=RECORD
+  Polk: ARRAY[1..40] OF CHAR;
+  Koosseis: ARRAY[1..3] OF Inime;
+  Ylemus: PAGUN;
+END;
+TYPE KEY1=RECORD
+  Polk: ARRAY[1..40] OF CHAR;
+END;
+END APR .
+
+                         8.2. Realisatsioonimoodul.            
+                         --------------------------
+IMPLEMENTATION MODULE APR;
+VAR T1: TEXT;
+    T2: TEXT;
+    KIRJELDUS: TEXT;
+
+BEGIN
+T1 := 'Ohvitseride korpuse isikuandmed';
+T2 := 'Komand”r:';
+KIRJELDUS := 'APR';
+FORTH
+/$ ['] File EXECUTE 12 + @ KIRJETYYP !       $/
+/$ 1 #KOMPLEKT !                             $/
+/$ ['] KEY1 EXECUTE 12 + @ KEY.ARRAY @ !     $/
+/$ 2 #VABA !                                 $/
+/$ addr T1 TEXT.ARRAY @ !                    $/
+/$ addr T2 TEXT.ARRAY @ 4 + !                $/
+/$ addr KIRJELDUS DEFNAME !                  $/
+END
+END APR .
+
+                           8.3. Programmimoodul.
+                           ---------------------
+
+MODULE APRL;
+IMPORT APR;
+FROM BASE IMPORT MBase;
+BEGIN
+MBase;
+END APRL .
+
+                             8.4. Abimoodul.
+                             ---------------
+   See  moodul sisaldab  ksikmoodulite  kompileerimisrutiine, mis tuleks teha
+muidu kshaaval ja k„sitsi. 
+
+MODULE POLK;
+BEGIN
+FORTH
+/$ ENV!                                             $/
+/$ LIT" BASE.DEF" DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" APR.DEF"  DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" BASE.MOD" DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" APR.MOD"  DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" APRL.MOD" DUP SET_WFILE SET_MFILE M2COMPILE $/
+END;
+END POLK.
+
+                   8.5. Failiredaktori ettevalmistamine.
+                   -------------------------------------
+ P„rast nende moodulite kirjutamist tuleb teha Modula-2 mens j„rgmised t””d:
+   1) W - vastus POLK
+   2) M - vastus POLK ( v“i - kui Teil on DOSEDIT - nool les, Enter )
+   3) C - resultaat on POLK.OBM.
+   4) T - kompileeritakse programm POLK.BIN
+   5) U - lahendatakse POLK.BIN; resulataadina on kompileeritud moodulid BASE.
+DEF, APR.DEF, BASE.MOD, APR.MOD ja APRL.MOD.
+   6) M - vastus APRL
+   7) B - kompileeritakse programm APRL.BIN 
+   8) F - APRL.BIN k„ivitab failiredaktori. Meie n„ites loodi fail nimega POLK
+ja trkiti see v„lja.
+
+                               8.6. Tabel.
+                               -----------
+
+     05/16/1991  16:16           POLK.MDB                     lk. 01 
+
+                     Dvacatyi  Sedleckii Tankovyi Polk
+                      Ohvitseride korpuse isikuandmed
+     ÉÍÍËÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+     º  º           ³           ³                 ³                 º
+     º  º           ³           ³       Synd      ³                 º
+     º  º           ³           ³                 ³                 º
+     º  º  Eesnimi  ³   Nimi    ÃÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄ´     Zwanije     º
+     º  º           ³           ³    ³      ³     ³                 º
+     º  º           ³           ³DAY ³MONTH ³YEAR ³                 º
+     º  º           ³           ³    ³      ³     ³                 º
+     ÌÍÍÎÍÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍØÍÍÍÍØÍÍÍÍÍÍØÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
+     º  º           ³           ³    ³      ³     ³                 º
+     º01ºIvan       ³Kvassov    ³01  ³05    ³1920 ³polkovnik        º
+     º  º           ³           ³    ³      ³     ³                 º
+     º02ºNikolai    ³Smirnov    ³07  ³10    ³1930 ³major            º
+     º  º           ³           ³    ³      ³     ³                 º
+     º03ºNikolai    ³Ivanov     ³09  ³05    ³1932 ³major            º
+     º  º           ³           ³    ³      ³     ³                 º
+     ÈÍÍÊÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÏÍÍÍÍÍÍÏÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+                                                                
+     Komand”r:  polkovnik
+
+                            Otep„„ Riigimajand                       
+     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+______________________________________________________________________________
+
+
+   Modula-2Base'i  autor on  Tš  majanduskberneetika ja  statistika  kateedri
+dots. Ain Isotamm ( Tš rakendusmatemaatika  probleemlabor,  J. Liivi 2 t. 406,
+tel. 35248; kateeder Nooruse 9 t. 303, tel. 28936 ). 
+
+14. detsembril 1990. a. Tartus.
+
+                                                                              
+                                                                              
+                                                                              
+
+                                                                           
+Modula2DataBase
+Key support.
+                     ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+MASTER_RECORD+32:ÍÍ>0º >makett    keykompl. 1  º
+MASTER_RECORD+36:N  4º komplekt1 passi SA      º
+                     ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
+                            .   .   .   .
+                     ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
+                     º >makett    keykompl. N  º
+     ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶ komplektN passi SA      º
+     ³               ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+   ÚÄÁÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÂÄÄÄÄÄÄÂÄ ÄÂÄÄÂÄÄÄÄ¿
+   ³ 0: L(konka)³2: #keys³4: l1³6: SA1³...³ln³SAn ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÁÄÄÄÄÄÄÁÄ ÄÁÄÄÁÄÄÄÄÙ
+
+                              Formaatimata kirje
+   Kui failikirjelduse aluseks olev kirjetp ei sisalda massiivitpi,  mille
+elemendid  on kirjed,  siis  dialoogiks ei genereerita tabelit ning vaikimisi-
+-trkki ei eksisteeri: iga kirjev„lja ja "vabatekstide" rida, paigutus real ja
+trkiatribuudid  tuleb m„„rata kshaaval.  NB!  RGE KASUTAGE ( esialgu ) SEDA
+VARIANTI ALTERNATIIVSE KIRJETššBI PUHUL!
+   Toome allpool selle variandi n„ite.
+______________________________________________________________________________
+DEFINITION MODULE PISI;
+TYPE DATE=RECORD DAY:[1..31]; MONTH: [1..12];
+                 YEAR:CARDINAL ; END ;
+TYPE TEXT=ARRAY[1..256] OF CHAR;
+TYPE Inime=RECORD
+  Eesnimi,Nimi: ARRAY[1..10] OF CHAR;
+       Ident:CARDINAL;
+       Synd: DATE;                                    
+       Abikaasa: ARRAY[1..20] OF CHAR;
+       Lapsi: CARDINAL;
+END; 
+TYPE KEY=RECORD
+   Nimi,Eesnimi: ARRAY[1..10] OF CHAR;
+END;
+END PISI .
+______________________________________________________________________________
+
+IMPLEMENTATION MODULE PISI;
+VAR T1: TEXT;
+    T2: TEXT;
+    KIRJELDUS: TEXT;
+
+BEGIN
+T1 := 'Laadige apelsinid tnnidesse. Vennad Karamazovid.';
+T2 := 'Paelavabriku P„„lik:';
+KIRJELDUS := 'SUUR';
+FORTH
+/$ ['] Inime EXECUTE 12 + @ KIRJETYYP !      $/
+/$ 1 #KOMPLEKT !                             $/
+/$ ['] KEY  EXECUTE 12 + @ KEY.ARRAY @ !     $/
+/$ 2 #VABA !                                 $/
+/$ addr T1 TEXT.ARRAY @ !                    $/
+/$ addr T2 TEXT.ARRAY @ 4 + !                $/
+/$ addr KIRJELDUS DEFNAME !                  $/
+END
+
+END PISI .
+______________________________________________________________________________
+MODULE NOTA;
+IMPORT PISI;
+FROM BASE IMPORT MBase;
+BEGIN
+MBase;
+END NOTA .
+______________________________________________________________________________
+MODULE POTA;
+BEGIN
+FORTH
+/$ ENV!                                              $/
+/$ LIT" BASE.DEF" DUP SET_WFILE SET_MFILE M2COMPILE  $/
+/$ LIT" PISI.DEF"  DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" BASE.MOD" DUP SET_WFILE SET_MFILE M2COMPILE  $/
+/$ LIT" PISI.MOD"  DUP SET_WFILE SET_MFILE M2COMPILE $/
+/$ LIT" NOTA.MOD" DUP SET_WFILE SET_MFILE M2COMPILE  $/
+END;
+END POTA.
+------------------------------------------------------------------------------
+ P„rast nende moodulite kirjutamist tuleb anda k„sk MB ning teha Modula-2  me-
+ns j„rgmised t””d:
+   1) W - vastus POTA
+   2) M - vastus POTA ( v“i - kui Teil on DOSEDIT - nool les, Enter )
+   3) C - resultaat on POTA.OBM.
+   4) T - kompileeritakse programm POTA.BIN
+   5) U - lahendatakse POTA.BIN; resulataadina on kompileeritud moodulid BASE.
+DEF, PISI.DEF, BASE.MOD, PISI.MOD ja NOTA.MOD.
+   6) M - vastus NOTA
+   7) B - kompileeritakse programm NOTA.BIN 
+   8) F - NOTA.BIN k„ivitab failiredaktori.
+NB! NEED TEGEVUSED TULEB TEHA UUE KIRJELDUSE JAOKS; KUI NEED T””D ON JUBA TEH-
+TUD, PIISAB T””DEST 6) JA 8)!
+   Failiredaktor ootab silumisversioonis k„sku  TLINK, seej„rel ksitakse fai-
+li nime. N„ites vastati PLANK. Uue faili puhul tuleb seej„rel tingimata valida
+"Lugemiseks  ja  kirjutamiseks"  ning  vastata teatele  "Faili PLANK.MDB pole.
+Loon?" "Y". Ekraanile tuuakse j„rgmine pilt:
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ08/04/1991  12:44:08 
+³ "Areng"                                                   ³                 
+³                                                           ³                 
+³                                                                             
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Modula2DataBase ¿
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³            ³ PLANK.MDB                    Loodud 08/03/1991  17:20       ³ ³
+³            ³ Kirje nr. 0                  Kirjete arv 2                  ³ ³
+³            ³ LUGEMISEKS JA KIRJUTAMISEKS  Kirje pikkus on 100  baiti     ³ ³
+³            ³          škshaaval                     Tsklis              ³ ³
+³            ³          N„htavalt                     Varjatult            ³ ³
+³            ³       Lappa               Lisa                Taasta        ³ ³
+³            ³      N„ita               Trki               Kustuta      ³ ³
+³            ³  Esimene  Viimane  J„rgmine  Eelmine  Index | v“ti  Sama    ³ ³
+³            ³            Jatka                         L“peta             ³ ³
+³            ³                                                             ³ ³
+³            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³F1appi F2v“ti F3>PRN F4      F5    F6v„rvidF7     F8      F9      F10       ³
+³                                                                            ³
+
+   M„rgi ^P asemel on "parem kolmnurk" - see n„itab aktiivset rida ja les-al-
+la saab teda liigutada vastavate kursorijuhtimisklahvidega.  Rea aktiivne v„li
+kujutatakse inverteetritult ( uue faili puhul on kohe aktiivne "Lisa" ). Tabe-
+li asemel tuuakse ekraanile j„rgmine pilt ( pikemate v„„rtuste puhul reservee-
+ritakse aatomile mitu rida ):
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ08/04/1991 12:29:02
+³ "Areng"                                                   ³PLANK.MDB       
+³                                                           ³                
+³                                                           ³                
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄModula2DataBase ¿
+³Eesnimi = Mati                                                              ³
+³Nimi = Tombak                                                               ³
+³Ident = 70001                                                               ³
+³Synd                                                                        ³
+³   DAY = 25                                                                 ³
+³   MONTH = 01                                                               ³
+³   YEAR = 1942                                                              ³
+³Abikaasa = Tiiu Eimre-Tombak                                                ³
+³Lapsi = 02                                                                  ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+³                                                                            ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³F1appi F2tyyp F3varu F4tabel F5fix F6v„rvidF7     F8      F9nulli F10taasta ³
+³                                                                            ³
+
+------------------------------------------------------------------------------
+

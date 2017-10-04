@@ -1,0 +1,30 @@
+
+
+DEFINITION MODULE APR;
+TYPE PAGUN=( reamees, jefreitor, nooremseersant, seersant, vanemseersant,
+vanem, lipnik, nooremleitnant, leitnant, vanemleitnant, kapten, major,
+alampolkovnik, polkovnik, kindralmajor, kindralleitnant, kindralpolkovnik,
+armeekindral, marssal );
+TYPE SUGU=(Mees,Naine);
+TYPE DATE=RECORD DAY:[1..31];
+                 MONTH: [1..12];
+                 YEAR:[1800..2000];
+          END ;
+TYPE VIIT=POINTER TO Inime;
+TYPE TEXT=ARRAY[1..256] OF CHAR;
+TYPE Inime=RECORD
+  Eesnimi,Nimi: ARRAY[1..10] OF CHAR;                                    
+  Synd: DATE;
+  Zwanije: PAGUN;
+END;
+
+TYPE File=RECORD
+  Polk: ARRAY[1..40] OF CHAR;
+  Koosseis: ARRAY[1..3] OF Inime;
+  Ylemus: PAGUN;
+END;
+TYPE KEY1=RECORD
+  Polk: ARRAY[1..40] OF CHAR;
+END;
+END APR .
+

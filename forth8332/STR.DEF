@@ -1,0 +1,84 @@
+(* Copyright (C) 1987 Jensen & Partners International *)
+DEFINITION MODULE Str;
+
+CONST
+  MaxSet = 32;
+  CSWords = 256 DIV MaxSet - 1;
+
+TYPE
+  CHARSET = ARRAY [0 .. CSWords] OF BITSET;
+
+PROCEDURE Caps(VAR S: ARRAY OF CHAR);
+
+PROCEDURE Compare(S1,S2: ARRAY OF CHAR) : INTEGER;
+
+PROCEDURE Concat(VAR Ns: ARRAY OF CHAR; S1,S2: ARRAY OF CHAR);
+
+PROCEDURE Length(S1: ARRAY OF CHAR) : CARDINAL;
+
+PROCEDURE Append(VAR Ns: ARRAY OF CHAR; S: ARRAY OF CHAR);
+
+PROCEDURE Copy  (VAR Ns: ARRAY OF CHAR; S: ARRAY OF CHAR);
+
+(* PROCEDURE Slice (VAR R: ARRAY OF CHAR; S: ARRAY OF CHAR; P,L: CARDINAL); *)
+
+PROCEDURE Pos(S,P: ARRAY OF CHAR) : CARDINAL;
+
+PROCEDURE InCharSet (s: CHAR; VAR cset: CHARSET) : BOOLEAN;
+
+PROCEDURE InclChar (s: CHAR; VAR cset: CHARSET);
+
+PROCEDURE EmptyCharSet (VAR cset: CHARSET);
+
+PROCEDURE AddChars (string: ARRAY OF CHAR; VAR cset: CHARSET);
+
+PROCEDURE Item (VAR R: ARRAY OF CHAR;
+                    S: ARRAY OF CHAR;
+                    T: CHARSET;
+                    N: CARDINAL);
+
+PROCEDURE ItemS(VAR R: ARRAY OF CHAR;
+                    S: ARRAY OF CHAR;
+                    T: ARRAY OF CHAR;
+                    N: CARDINAL);
+
+
+PROCEDURE Insert(VAR S1: ARRAY OF CHAR; S2: ARRAY OF CHAR; P: CARDINAL);
+
+PROCEDURE Delete(VAR S: ARRAY OF CHAR; P,L: CARDINAL);
+
+PROCEDURE Match(Source,Pattern: ARRAY OF CHAR) : BOOLEAN;
+
+
+PROCEDURE IntToStr (     V: INTEGER;
+                     VAR S: ARRAY OF CHAR;
+                      Base: CARDINAL;
+                    VAR OK: BOOLEAN);
+
+PROCEDURE CardToStr(     V: CARDINAL;
+                     VAR S: ARRAY OF CHAR;
+                      Base: CARDINAL;
+                    VAR OK: BOOLEAN);
+
+(*
+PROCEDURE RealToStr(        V: LONGREAL;
+                    Precision: CARDINAL;
+                          Eng: BOOLEAN;
+                        VAR S: ARRAY OF CHAR;
+                      VAR OK : BOOLEAN);
+	*)
+
+PROCEDURE StrToInt (     S: ARRAY OF CHAR;
+                      Base: CARDINAL;
+                    VAR OK: BOOLEAN) : INTEGER;
+
+PROCEDURE StrToCard(     S: ARRAY OF CHAR;
+                      Base: CARDINAL;
+                    VAR OK: BOOLEAN) : CARDINAL;
+
+(*
+PROCEDURE StrToReal(S: ARRAY OF CHAR; VAR OK: BOOLEAN ) : LONGREAL;
+	*)
+
+END Str.
+

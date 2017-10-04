@@ -1,0 +1,554 @@
+       START
+       A4 <- X'8100'
+       A6 <- X'8000'
+       CALL (X'0218')
+       NOP
+       STOP
+       R2 <- X'8402'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       R4 <- (A0)
+       R3 <- R3+R4
+       R3 -> (A0)
+       R2 <- X'8402'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8404'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R3 ? R2
+       R2 <- 0
+       CHECK N=0
+       R2 <- R2-1
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+2
+       NOP
+       R2 <- X'8402'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8403'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'0004'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       RET_SUBR
+       NOP
+       NOP
+       R2 <- X'8400'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R0 <- R0 SET_NZVC
+       R0 <- 0 
+       CHECK Z=1
+       R0 <- R0-1
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+69
+       NOP
+       R2 <- X'8401'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R0 -> (A6+)
+       R1 <- R2
+       R0 <- R2
+       R2 <- X'8402'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8403'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'FFFF'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8404'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8405'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'0008'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       CALL (X'0005')
+       NOP
+       R2 <- (X'8406')
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8400'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       RET_SUBR
+       NOP
+       NOP
+       R2 <- X'005A'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R0 <- R0+1
+       R2 <- X'0000'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R3 -> (A4+)
+       R2 -> (A4+)
+       D4 <- X'0001'
+       R2 <- (A4-D,A4)
+       A4 <- A4+D
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'0001'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'848A'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'0001'
+       R3 <- (-A4)
+       R4 <- (-A4)
+       R3 <- R3+R2
+       R3 ? R4
+       CHECK N=0
+       SKIP  *+6
+       NOP
+       R4 -> (A4+)
+       R3 -> (A4+)
+       SKIP  *-49
+       NOP
+       R2 <- X'0000'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8489'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'005A'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R0 <- R0+1
+       R2 <- X'0000'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R3 -> (A4+)
+       R2 -> (A4+)
+       D4 <- X'0001'
+       R2 <- (A4-D,A4)
+       A4 <- A4+D
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'848A'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'0001'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R3 ? R2
+       R2 <- 0
+       CHECK Z=1
+       R2 <- R2-1
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R0 <- R0 SET_NZVC
+       CHECK N=1
+       R0 <- -R0
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+228
+       NOP
+       R2 <- X'0002'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R0 -> (A6+)
+       R1 <- R3
+       R0 <- R2
+       R2 <- R2#R3
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R5 <- R1
+       MULF(R0,R1)
+       LOOP 15
+       NOP
+       END_LOOP
+       MULS(R0,R1)
+       R0 <- R1
+       R1 <- R5
+       R2 <- R0
+       R2 <- R1
+       R3 <- (-A6)
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R0 -> (A6+)
+       R1 <- R2
+       R0 <- R3
+       R0 <- R0 SET_NZVC
+       R0 <- 0 
+       CHECK N=1
+       R0 <- R0-1
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+3
+       NOP
+       R0 <- -R0
+       R2 <- X'0003'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8487'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8487'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8485'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8488'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8488'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'005A'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R0 -> (A6+)
+       R1 <- R3
+       R0 <- R2
+       R3 ? R2
+       R2 <- 0
+       CHECK N=1
+       R2 <- R2-1
+       R3 <- R0
+       R4 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- R3
+       R3 <- R4
+       R3 ? R2
+       R2 <- 0
+       CHECK Z=1
+       R2 <- R2-1
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R3
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R0 <- R0 SET_NZVC
+       CHECK N=1
+       R0 <- -R0
+       R2 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R2!R2 SET_NZVC
+       CHECK Z=1
+       SKIP  *+59
+       NOP
+       R2 <- X'0000'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'848A'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8488'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       R2 <- X'8488'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'8487'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- R0
+       R3 <- R1
+       R0 <- (-A6)
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8488'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       SKIP  *-104
+       NOP
+       R2 <- X'8489'
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       A0 <- R0
+       NOP
+       R0 <- (A0)
+       R2 <- X'0001'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       R2 <- R3+R2
+       R1 -> (A6+)
+       R1 <- R0
+       R0 <- R2
+       R2 <- X'8489'
+       R3 <- R0
+       R0 <- R1
+       R1 <- (-A6)
+       A0 <- R2
+       NOP
+       R3 -> (A0)
+       SKIP  *+2
+       NOP
+       R2 <- X'0001'
+       R3 <- (-A4)
+       R4 <- (-A4)
+       R3 <- R3+R2
+       R3 ? R4
+       CHECK N=0
+       SKIP  *+6
+       NOP
+       R4 -> (A4+)
+       R3 -> (A4+)
+       SKIP  *-292
+       NOP
+       RET_SUBR
+       NOP
+       NOP
+       CALL (X'0043')
+       NOP
+       CALL (X'009B')
+       NOP
+       RET_SUBR
+       NOP
+       NOP
+       DATA
+       DC X'00000000'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00008480'
+       DC X'00000000'
+       DC X'0000FA93'
+       DC X'FFFFFFFF'
+       DC X'00000000'
+       END
