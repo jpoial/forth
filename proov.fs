@@ -42,5 +42,13 @@ y DUP . ." contains " @ . CR
   CR ." That's ok " ;
 
 : fact ( n --- n! )
-  DUP 1 DO I * LOOP ;
+ DUP 1 > 
+ IF 
+    DUP 1 
+       DO 
+          I * 
+       LOOP 
+ ELSE 
+    DROP 1 
+ THEN ;
 
