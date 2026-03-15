@@ -52,3 +52,5 @@ y DUP . ." contains " @ . CR
     DROP 1 
  THEN ;
 
+ BYE
+

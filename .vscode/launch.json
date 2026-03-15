@@ -11,6 +11,17 @@
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Run Forth Screen File with GForth",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "/usr/bin/gforth",
+            "args": [
+                "${file}"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

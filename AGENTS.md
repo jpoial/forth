@@ -5,7 +5,7 @@ This file provides guidance to agents when working with code in this repository.
 ## Project Overview
 - **Language**: Forth
 - **Interpreter**: GForth (GNU Forth)
-- **File Extension**: .fs (Forth source files)
+- **File Extension**: .fs (Forth source files), .scr (old screen files)
 
 ## Running Forth Files
 - **F5 Key**: Runs the currently open .fs file using GForth (configured via launch.json)
@@ -14,7 +14,7 @@ This file provides guidance to agents when working with code in this repository.
 
 ## Key Files
 - [`proov.fs`](proov.fs): Example Forth program with tests and definitions
-- [`gforth.fi`](gforth.fi): GForth documentation in Finnish
+- [`gforth.fi`](gforth.fi): GForth binary
 
 ## Forth Environment
 This project uses standard GForth syntax and conventions. The proov.fs file demonstrates:

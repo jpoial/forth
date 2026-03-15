@@ -15,7 +15,61 @@
                 "panel": "shared",
                 "showReuseMessage": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Run Forth Screen File",
+            "type": "shell",
+            "command": "gforth",
+            "args": [
+                "${file}"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Convert SCR to Text",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "convert_scr.py",
+                "${file}"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Convert Text to SCR",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "convert_back_scr.py",
+                "${file}"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true
+            },
+            "problemMatcher": [],
+            "group": "build"
         }
     ]
 }
