@@ -4,7 +4,7 @@ This file provides guidance to agents when working with code in this repository.
 
 ## Project Overview
 - **Language**: Forth
-- **Interpreter**: GForth (GNU Forth), PC-FORTH 2.0
+- **Interpreter**: GForth (GNU Forth), PC/FORTH 2.0
 - **File Extension**: .fs (Forth source files), .scr (old screen files)
 
 ## Running Forth Files
