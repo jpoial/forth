@@ -250,3 +250,32 @@ It combines:
 - staged image construction under tight memory constraints
 
 The most important file for the construction story is `CONSTR_CONVERTED.FS`, because it shows how grammar descriptions are converted into the packed artifacts and runtime tables used by the later compiler images.
+
+## Thesis Crosswalk
+
+The 1986 dissertation behind this archive is not reproduced here as a single frozen code snapshot.
+Instead, the repository appears to preserve a later and larger evolution of the same ideas.
+
+The most useful thesis-to-repo mapping is:
+
+| Thesis topic | Best matching files in this repo | Notes |
+| --- | --- | --- |
+| Algebra of Forth specifications | `forth8332/SPEC32_CONVERTED.FS` | Closest match to the dissertation appendix on formal specifications of Forth words |
+| Static stack/type checking for linear Forth programs | `forth8332/TCOMP06_CONVERTED.FS`, `forth8332/TCOMP16_CONVERTED.FS`, `forth8332/TCOMP26_CONVERTED.FS`, `forth8332/TCOMP36_CONVERTED.FS`, `forth8332/TCOMPCA_CONVERTED.FS` | Best match for the dissertation appendix on static control of stack-passed parameters |
+| Describing source languages with embedded semantic hooks | `forth8332/MODULA_CONVERTED.FS`, `forth8332/MOD2VI_CONVERTED.FS`, `forth8332/JPIGRAM_CONVERTED.FS`, `forth8332/REALGRAM_CONVERTED.FS`, `forth8332/UUSMOD_CONVERTED.FS` | Grammar files interleave productions with `#PRE`, `#POST`, `#REG`, and `#PERM` actions |
+| Constructor for turning grammar descriptions into runtime artifacts | `forth8332/CONSTR_CONVERTED.FS` | Core "compiler compiler" file in the archive |
+| Analyzer/runtime built from generated grammar artifacts | `forth8332/JMODANAL_CONVERTED.FS`, `forth8332/RMODANAL_CONVERTED.FS` | Parser/analyzer side that consumes generated tables and semantic text |
+| Semantic object construction and type handling | `forth8332/POHI_CONVERTED.FS`, `forth8332/REC_CONVERTED.FS`, `forth8332/TRANSEXP_CONVERTED.FS` | Compiler-internal objects, records, type compatibility, and expression translation |
+| Runtime semantics for generated code | `forth8332/SEMANTIC_CONVERTED.FS` | Execution model used by emitted threaded code |
+| Linking and final compiler images | `forth8332/BINLINK_CONVERTED.FS`, `forth8332/BINLINKC_CONVERTED.FS`, `forth8332/M2LINK_CONVERTED.FS`, `forth8332/CROSS_CONVERTED.FS` | Final relocation, linking, and image assembly |
+
+If you want to read the repo as a dissertation companion, a good order is:
+
+1. `forth8332/SPEC32_CONVERTED.FS`
+2. `forth8332/CONSTR_CONVERTED.FS`
+3. one grammar file such as `forth8332/MODULA_CONVERTED.FS`
+4. `forth8332/POHI_CONVERTED.FS`
+5. `forth8332/REC_CONVERTED.FS`
+6. `forth8332/TRANSEXP_CONVERTED.FS`
+7. `forth8332/SEMANTIC_CONVERTED.FS`
+8. one `TCOMP` file
